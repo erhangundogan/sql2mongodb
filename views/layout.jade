@@ -1,0 +1,31 @@
+!!! 5
+html(lang="tr")
+  head
+    block head
+      title GwG Priceless
+      !=partial("meta")
+      link(type="text/css", href="/public/style/style.css", rel="stylesheet")
+      //Bootstrap
+      link(href="/public/bootstrap/css/bootstrap.min.css", rel="stylesheet", media="screen")
+
+    block scripts
+      //if lt IE 9
+        script(src="//html5shiv.googlecode.com/svn/trunk/html5.js")
+      script(src="http://code.jquery.com/jquery-latest.js")
+      script(src="/public/bootstrap/js/bootstrap.min.js")
+
+    body(data-spy="scroll", data-target=".bs-docs-sidebar", data-twttr-rendered="true")
+      .navbar.navbar-inverse.navbar-fixed-top
+        .navbar-inner
+          .container
+            button.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.brand(href="/") GwG Priceless
+            .nav-collapse.collapse
+              ul.nav
+                li.active
+                  a(href="/") Anasayfa
+      .container
+        block content

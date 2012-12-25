@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  - var result = result ? result : false;
+  .row(style="margin-top:2em")
+    .span12
+      form.form-search(action="/address", method="post")
+        label Bağlanmak istediğiniz MS SQL Server adresini giriniz.
+        .row
+          .span12
+            input.span4#appendedPrependedInput(type="text", name="visit[address]")
+            button.btn(type="submit", style="margin-left:5px") Bağlan
+        .row
