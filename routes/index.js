@@ -3,21 +3,22 @@
  * GET home page.
  */
 
-var Connection = require('tedious').Connection,
-    Request = require('tedious').Request,
-    jade = require('jade'),
+var Connection = require("tedious").Connection,
+    Request = require("tedious").Request,
+    Types = require("tedious").TYPES,
+    jade = require("jade"),
     path = require("path"),
     config = {
-      userName: '',
-      password: '',
-      server: '80.93.210.73',
+      userName: "",
+      password: "",
+      server: "80.93.210.73",
       options: {
-        database: 'My_EG_Search_2011'
+        database: "My_EG_Search_2011"
       }
     };
 
 exports.index = function(req, res){
-  res.render('index')
+  res.render("index")
 };
 
 exports.sqlcon = function(req, res) {
@@ -27,7 +28,7 @@ exports.sqlcon = function(req, res) {
 exports.addressPost = function(req, res) {
   if (req.body && req.body.visit && req.body.visit.address) {
     var connection = new Connection(config);
-    connection.on('connect', function(err) {
+    connection.on("connect", function(err) {
       if (err) {
         console.log(err);
       } else {
@@ -47,11 +48,11 @@ exports.addressPost = function(req, res) {
                   res.write("</table>");
                   res.redirect("back");
                 } else {
-                  console.log(rowCount + ' rows');
+                  console.log(rowCount + " rows");
                 }
               });
 
-              request.on('row', function(columns) {
+              request.on("row", function(columns) {
                 jade.renderFile(
                   path.join(__dirname, "..", "views", "row.jade"), {
                     "columns": columns
@@ -65,7 +66,7 @@ exports.addressPost = function(req, res) {
                 });
               });
 
-              request.on('doneInProc', function(rowCount, more) {
+              request.on("doneInProc", function(rowCount, more) {
                 res.write("</table>");
                 res.end();
               });
@@ -73,36 +74,17 @@ exports.addressPost = function(req, res) {
               connection.execSql(request);
               */
 
-              var params = {};
-              params.OperatorID = 0;
-              params.HotelID = "";
-              params.CountryCode = "EG";
-              params.City = "Hurghada";
-              params.Area = "";
-              params.Categories = "";
-              params.Boards = "";
-              params.Rooms = "";
-              params.CheckInDate = "2013-03-01";
-              params.CheckOutDate = "2013-03-10";
-              params.Adult = 2;
-              params.Child = 0;
-              params.ChildAge1 = 0;
-              params.ChildAge2 = 0;
-              params.UserID = 112000;
-              params.FirmID = 65;
-              params.Position = "web_Agent";
-
-              request = new Request("exec Src_HotelSearchv5", function(err, rowCount) {
+              request = new Request("Src_HotelSearchv5", function(err, rowCount) {
                 if (err) {
                   console.log(err);
                   res.write("</table>");
                   res.redirect("back");
                 } else {
-                  console.log(rowCount + ' rows');
+                  console.log(rowCount + " rows");
                 }
               });
 
-              request.on('row', function(columns) {
+              request.on("row", function(columns) {
                 jade.renderFile(
                   path.join(__dirname, "..", "views", "row.jade"), {
                     "columns": columns
@@ -116,17 +98,35 @@ exports.addressPost = function(req, res) {
                 });
               });
 
-              request.on('doneInProc', function(rowCount, more) {
+              request.on("doneInProc", function(rowCount, more) {
                 res.write("</table>");
                 res.end();
               });
 
-              connection.execute(request, params);
+              request.addParameter("OperatorID", Types.int, 0);
+              request.addParameter("HotelID", Types.nVarChar, "");
+              request.addParameter("CountryCode", Types.nVarChar, "EG");
+              request.addParameter("City", Types.nVarChar, "Hurghada");
+              request.addParameter("Area", Types.nVarChar, "");
+              request.addParameter("Categories", Types.nVarChar, "");
+              request.addParameter("Boards", Types.nVarChar, "");
+              request.addParameter("Rooms", Types.nVarChar, "");
+              request.addParameter("CheckInDate", Types.dateTime, "2013-03-01");
+              request.addParameter("CheckOutDate", Types.dateTime, "2013-03-10");
+              request.addParameter("Adult", Types.int, 2);
+              request.addParameter("Child", Types.int, 0);
+              request.addParameter("ChildAge1", Types.int, 0);
+              request.addParameter("ChildAge2", Types.int, 0);
+              request.addParameter("UserID", Types.int, 112000);
+              request.addParameter("FirmID", Types.int, 65);
+              request.addParameter("Position", Types.nVarChar, "web_Agent");
+
+              connection.callProcedure(request);
             }
         });
       }
     });
-    connection.on('errorMessage', function(err) {
+    connection.on("errorMessage", function(err) {
       console.log(err);
     });
   }
