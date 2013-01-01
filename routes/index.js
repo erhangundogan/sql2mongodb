@@ -32,8 +32,9 @@ exports.addressPost = function(req, res) {
       if (err) {
         console.log(err);
       } else {
+        var filePath = path.join(__dirname, "..", "views", "hotel.jade");
         jade.renderFile(
-          path.join(__dirname, "..", "views", "hotel.jade"),
+          filePath,
           function(err, result) {
             if (err) {
               console.error("[ERROR] JadeFormatter, %s", err.stack||err);
@@ -81,6 +82,14 @@ exports.addressPost = function(req, res) {
                   res.redirect("back");
                 } else {
                   console.log(rowCount + " rows");
+                }
+              });
+
+              request.on("columnMetadata", function(columns) {
+                if (columns) {
+                  for (column in columns) {
+                    console.log(column);
+                  }
                 }
               });
 
