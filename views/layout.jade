@@ -8,11 +8,11 @@ html(lang="tr")
       //Bootstrap
       link(href="/public/bootstrap/css/bootstrap.min.css", rel="stylesheet", media="screen")
 
+    //if lt IE 9
+      script(src="//html5shiv.googlecode.com/svn/trunk/html5.js")
+    script(src="http://code.jquery.com/jquery-latest.js")
+    script(src="/public/bootstrap/js/bootstrap.min.js")
     block scripts
-      //if lt IE 9
-        script(src="//html5shiv.googlecode.com/svn/trunk/html5.js")
-      script(src="http://code.jquery.com/jquery-latest.js")
-      script(src="/public/bootstrap/js/bootstrap.min.js")
 
     body(data-spy="scroll", data-target=".bs-docs-sidebar", data-twttr-rendered="true")
       .navbar.navbar-inverse.navbar-fixed-top

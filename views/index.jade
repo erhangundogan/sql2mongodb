@@ -1,13 +1,108 @@
 extends layout
 
+block scripts
+  script(src="/socket.io/socket.io.js")
+  script
+    var socket = io.connect("http://localhost:3000");
+    socket.on("incoming", function(data) {
+      $("#result").html(data);
+    });
+    socket.on("columns", function(data) {
+      $("#result").append(data);
+    });
+    socket.on("row", function(data) {
+      $("#result").append(data);
+    });
+    socket.on("done", function(data) {
+      $("#result").append(data);
+    });
+    socket.on("error", function(data) {
+      document.write(data);
+    });
+    $(function(){
+      $("#validateServer").click(function(ev){
+        ev.preventDefault();
+        var settings = {};
+        settings.server = $("#inputServer").val();
+        settings.user = $("#inputUser").val();
+        settings.password = $("#inputPassword").val();
+        socket.emit("test server", settings);
+      });
+
+      $("#validateCommand").click(function(ev){
+        ev.preventDefault();
+        var settings = {};
+        settings.server = $("#inputServer").val();
+        settings.user = $("#inputUser").val();
+        settings.password = $("#inputPassword").val();
+        settings.table = $("#inputTable:checked").val();
+        settings.procedure = $("#inputProcedure:checked").val();
+        settings.name = $("#inputItemName").val();
+        socket.emit("test command", settings);
+      });
+
+      $("#inputTable").click(function(){
+        $("#procedureDetail").hide();
+        $("#tableDetail").show();
+      }).trigger();
+
+      $("#inputProcedure").click(function(){
+        $("#tableDetail").hide();
+        $("#procedureDetail").show();
+      }).trigger();
+    });
+
 block content
-  - var result = result ? result : false;
   .row(style="margin-top:2em")
-    .span12
-      form.form-search(action="/address", method="post")
-        label Bağlanmak istediğiniz MS SQL Server adresini giriniz.
+    .span18
+      form.form-horizontal(action="/", method="post")
+        input(type="hidden", name="csrf", value="csrf")
         .row
           .span12
-            input.span4#appendedPrependedInput(type="text", name="visit[address]")
-            button.btn(type="submit", style="margin-left:5px") Bağlan
+            h4 MSSQL Sunucusu
+            .row
+              .span12
+                .control-group
+                  label.control-label(for="inputServer") Server Adres
+                  .controls
+                    input#inputServer(type="text", placeholder="IP veya Domain")
+                .control-group
+                  label.control-label(for="inputUser") Kullanıcı
+                  .controls
+                    input#inputUser(type="text", placeholder="Kullanıcı")
+                .control-group
+                  label.control-label(for="inputPassword") Şifre
+                  .controls
+                    input#inputPassword(type="password", placeholder="Şifre")
+                .control-group
+                  .controls
+                    input.btn.primary#validateServer(type="submit", value="Test")
         .row
+          .span12
+            h4 Tablo veya Prosedür
+            .row
+              .span12
+                .control-group
+                  .controls
+                    label.radio.inline Tablo
+                      input#inputTable(type="radio", name="settings[itemType]", value="table")
+                    label.radio.inline Saklı Yordam
+                      input#inputProcedure(type="radio", name="settings[itemType]", value="procedure", checked="checked")
+                .control-group
+                  label.control-label(for="inputItemName") Veritabanı
+                  .controls
+                    input#inputItemName(type="text", placeholder="Veritabanı")
+                .control-group.hide#tableDetail
+                  label.control-label(for="tableTextarea") Tablo
+                  .controls
+                    textarea#tableTextarea(rows="4", onfocus="this.rows=8")
+                .control-group.hide#procedureDetail
+                  label.control-label(for="procedureTextarea") Prosedür
+                  .controls
+                    textarea#procedureTextarea(rows="4", onfocus="this.rows=8")
+                .control-group
+                  .controls
+                    input.btn#validateCommand(type="submit", value="Bağlan")
+        .row
+          .span12
+            #result

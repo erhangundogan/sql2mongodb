@@ -1,7 +1,412 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3b8e80c-6fdc-4cac-bfc8-6b053e7adce0" name="Default" comment="" />
+    <list default="true" id="e5e9c455-a9c4-46f9-a3c3-27fe53e9cd32" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schema/hotel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils.js" />
+      <change type="DELETED" beforePath="C:\projects\priceless\.idea\jsLibraryMappings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\.bin\jade" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\bin\jade" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\jade.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\jade.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\jade.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\compiler.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\doctypes.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\filters.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\inline-tags.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\jade.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\lexer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\attrs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\block-comment.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\block.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\case.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\code.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\comment.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\doctype.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\each.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\filter.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\literal.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\mixin.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\node.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\tag.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\nodes\text.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\runtime.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\self-closing.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\lib\utils.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\.bin\cake" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\.bin\coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\CNAME" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\README" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\Rakefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\bin\cake" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\bin\coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\extras\jsl.conf" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\browser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\cake.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\coffee-script.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\grammar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\helpers.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\lexer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\nodes.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\optparse.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\repl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\rewriter.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\lib\coffee-script\scope.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\coffee-script\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\History.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\lib\commander.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\commander\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\README.markdown" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\examples\pow.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\chmod.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\clobber.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\mkdirp.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\perm.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\perm_sync.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\race.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\rel.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\return.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\return_sync.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\root.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\sync.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\umask.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\node_modules\mkdirp\test\umask_sync.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\runtime.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\jade\runtime.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\History.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\examples\schema.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\collection.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\connection.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\connectionstate.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\document.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\drivers\node-mongodb-native\binary.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\drivers\node-mongodb-native\connection.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\drivers\node-mongodb-native\objectid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\error.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\errors\cast.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\errors\document.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\errors\missingSchema.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\errors\overwriteModel.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\errors\validation.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\errors\validator.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\errors\version.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\model.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\namedscope.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\promise.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\query.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\querystream.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\array.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\boolean.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\buffer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\date.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\documentarray.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\mixed.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\number.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\objectid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schema\string.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schemadefault.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\schematype.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\statemachine.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\types\array.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\types\buffer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\types\documentarray.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\types\embedded.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\types\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\types\objectid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\utils.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\lib\virtualtype.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\hooks\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\hooks\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\hooks\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\hooks\hooks.alt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\hooks\hooks.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\hooks\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\hooks\test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\install.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\admin.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\collection.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\base_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\db_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\delete_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\get_more_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\insert_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\kill_cursor_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\query_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\commands\update_command.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\base.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_utils.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\mongos.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\read_preference.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\repl_set.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\strategies\ping_strategy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\strategies\statistics_strategy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\url_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\cursor.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\cursorstream.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\db.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\gridfs\chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\gridfs\grid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\gridfs\gridstore.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\gridfs\readstream.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\mongo_client.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\responses\mongo_reply.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\lib\mongodb\utils.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\benchmarks\benchmarks.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\binding.gyp" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext\bson.cc" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext\bson.h" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext\win32\ia32\bson.node" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext\win32\x64\bson.node" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext\wscript" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\install.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\binary.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\binary_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\bson.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\code.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\db_ref.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\double.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\float_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\long.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\max_key.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\min_key.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\objectid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\symbol.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\lib\bson\timestamp.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\browser\bson_test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\browser\nodeunit.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\browser\suite2.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\browser\suite3.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\browser\test.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\bson_array_test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\bson_parser_comparision_test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\bson_test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\bson_typed_array_test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\data\test_gs_weird_bug.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\test_full_bson.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\to_bson_test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\test\node\tools\utils.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\tools\gleak.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\tools\jasmine-1.1.0\MIT.LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\tools\jasmine-1.1.0\jasmine-html.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\tools\jasmine-1.1.0\jasmine.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\tools\jasmine-1.1.0\jasmine.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\node_modules\bson\tools\jasmine-1.1.0\jasmine_favicon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\mongodb\upload.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\ms.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\test\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\test\support\jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\ms\test\test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\History.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\muri\test\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\History.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\bench.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\lib\sliced.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\node_modules\sliced\test\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\static.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\mongoose\website.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\node-mssql" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\codeStyleSettings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\dictionaries\mike.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\inspectionProfiles\Project_Default.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\inspectionProfiles\profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\scopes\scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\tedious.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.idea\workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.tedious.sublime-project" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.tedious.sublime-workspace" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\examples\minimal.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\examples\simple-client.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\all-headers.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\buffertools.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\collation.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\connection.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\data-type.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\debug.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\guid-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\instance-lookup.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\library.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\login7-payload.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\message-io.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\metadata-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\packet.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\prelogin-payload.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\request.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\rpcrequest-payload.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\special-stored-procedure.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\sqlbatch-payload.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\tds-versions.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\tedious.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\colmetadata-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\done-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\env-change-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\infoerror-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\loginack-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\order-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\returnstatus-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\returnvalue-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\row-token-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\token-stream-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\token\token.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\tracking-buffer\bigint.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\tracking-buffer\readable-tracking-buffer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\tracking-buffer\tracking-buffer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\tracking-buffer\writable-tracking-buffer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\transaction.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\lib\value-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\.gitmodules" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\lib\async.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\async\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\encodings\gbk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\encodings\singlebyte.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\encodings\table\gbk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\generation\generate-singlebyte.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\index.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\log.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\log2.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\log3.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\test\cyrillic-test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\test\gbk-test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\test\gbkFile.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\test\greek-test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\test\main-test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\test\perfomance.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\iconv-lite\test\turkish-test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\sprintf\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\sprintf\lib\sprintf.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\node_modules\sprintf\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\scripts\build" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\scripts\tests-all" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\scripts\tests-integration" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\scripts\tests-unit" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\integration\connection-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\integration\datatypes-in-results-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\integration\instance-lookup-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\integration\parameterised-statements-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\integration\prepare-execute-statements-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\integration\rpc-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\integration\transactions-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\performance\big-select.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\all-headers-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\buffertools-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\debug-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\instance-lookup-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\login7-payload-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\message-io-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\packet-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\prelogin-payload-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\tedious-test.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\colmetadata-token-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\done-token-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\env-change-token-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\infoerror-token-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\loginack-token-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\order-token-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\row-token-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\token\token-stream-parser-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\tracking-buffer\bigint-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\tracking-buffer\readable-tracking-buffer-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\tracking-buffer\tracking-buffer-test.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\projects\priceless\node_modules\tedious\test\unit\tracking-buffer\writable-tracking-buffer-test.coffee" afterPath="" />
+      <change type="MOVED" beforePath="C:\projects\priceless\views\hotel.jade" afterPath="$PROJECT_DIR$/views/profiler.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/priceless.iml" afterPath="$PROJECT_DIR$/.idea/priceless.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/style/style.css" afterPath="$PROJECT_DIR$/public/style/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
+    </list>
     <ignored path="priceless.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,48 +425,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="16" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
+        <entry file="file://$PROJECT_DIR$/sockets/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="13" selection-start="3272" selection-end="3272" vertical-scroll-proportion="0.58467245">
-              <folding>
-                <element signature="e#984#2058#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="response.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../node_modules/express/lib/response.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="279" column="7" selection-start="6566" selection-end="6566" vertical-scroll-proportion="0.0">
+            <state line="19" column="6" selection-start="436" selection-end="436" vertical-scroll-proportion="0.44789082">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="connection.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/connection.js">
+      <file leaf-file-name="index.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="22" selection-start="5234" selection-end="5234" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="9" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+            <state line="7" column="30" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -70,7 +446,16 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/style/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="19" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
+            <state line="4" column="24" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="2" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,25 +468,28 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/index.jade" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/views/row.jade" />
-        <option value="$PROJECT_DIR$/views/hotel.jade" />
-        <option value="$PROJECT_DIR$/public/style/style.css" />
+        <option value="$PROJECT_DIR$/routes/array.js" />
+        <option value="$PROJECT_DIR$/routes/sockets.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/style/style.css" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/sockets/index.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="438" />
-    <option name="y" value="5" />
-    <option name="width" value="1448" />
-    <option name="height" value="968" />
+    <option name="x" value="216" />
+    <option name="y" value="28" />
+    <option name="width" value="1460" />
+    <option name="height" value="965" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -171,6 +559,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="sockets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="priceless" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="priceless" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="schema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="priceless" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="priceless" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -215,19 +631,27 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode.Jade" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="C:/Program Files/nodejs/node.exe" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Other Languages" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nakliyem" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\priceless\public\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\priceless" />
+      <recent name="C:\projects\priceless\sockets" />
+    </key>
+  </component>
   <component name="RunManager" selected="Node.js.priceless">
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="app.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
-    <configuration default="false" name="priceless" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="app.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+    <configuration default="false" name="priceless" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
@@ -259,52 +683,31 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e3b8e80c-6fdc-4cac-bfc8-6b053e7adce0" name="Default" comment="" />
-      <created>1356469570206</created>
-      <updated>1356469570206</updated>
+      <created>1357149112706</created>
+      <updated>1357149112706</updated>
     </task>
     <servers />
   </component>
-  <component name="TodoView" selected-index="0">
-    <todo-panel id="selected-file">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="default-changelist">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="438" y="5" width="1448" height="968" extended-state="0" />
-    <editor active="false" />
+    <frame x="216" y="28" width="1460" height="965" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297362" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23232323" sideWeight="0.60191846" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39808154" sideWeight="0.48845598" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20028612" sideWeight="0.5980746" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40192538" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39928058" sideWeight="0.5064935" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40647483" sideWeight="0.497114" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972324" sideWeight="0.9916667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -343,7 +746,7 @@
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
@@ -358,113 +761,84 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="34" />
+      <option name="time" value="16" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="1" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/connection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="22" selection-start="5234" selection-end="5234" vertical-scroll-proportion="0.0">
+        <state line="386" column="0" selection-start="13196" selection-end="13196" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/views/profiler.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="9" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/style/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="12" selection-start="436" selection-end="436" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#984#2058#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/style/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="9" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/meta.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="18" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/style/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="29" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
+        <state line="40" column="0" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.627451">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/connection.js">
+    <entry file="file://$PROJECT_DIR$/array.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="22" selection-start="5234" selection-end="5234" vertical-scroll-proportion="0.0">
+        <state line="329" column="14" selection-start="7726" selection-end="7726" vertical-scroll-proportion="1.1673728">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/request.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="28" selection-start="4177" selection-end="4177" vertical-scroll-proportion="0.33261338" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../node_modules/express/lib/response.js">
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="7" selection-start="6566" selection-end="6566" vertical-scroll-proportion="0.0">
+        <state line="13" column="55" selection-start="475" selection-end="475" vertical-scroll-proportion="0.52330506">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="13" selection-start="3272" selection-end="3272" vertical-scroll-proportion="0.58467245">
-          <folding>
-            <element signature="e#984#2058#0" expanded="false" />
-          </folding>
+        <state line="10" column="2" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/style/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="24" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="30" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockets/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="6" selection-start="436" selection-end="436" vertical-scroll-proportion="0.44789082">
+          <folding />
         </state>
       </provider>
     </entry>
