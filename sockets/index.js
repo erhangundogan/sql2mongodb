@@ -19,30 +19,27 @@ var Connection = require("tedious").Connection,
       }
     };
 
-
-var query = function(socket, connection, table, procedure, cb) {
-
-};
-
-exports.validateServer = function(socket) {
+exports.validateServer = function(err, socket, session) {
   socket.on("test server", function(data) {
     if (!data) {
       return socket.emit("error", { message:"no server information received" });
     }
 
     var config = {
-      userName: data.user,
-      password: data.password,
-      server: data.server
-    },
-    connection = new Connection(config);
+        userName: data.user,
+        password: data.password,
+        server: data.server
+      },
+      connection = new Connection(config);
 
     connection.on("connect", function(err) {
       if (err) {
         console.log(err);
         socket.emit("error", { message:err });
       } else {
-        socket.emit("connected")
+        socket.emit("connected");
+        session.config = config;
+        session.save();
       }
     });
 
@@ -59,21 +56,23 @@ exports.validateServer = function(socket) {
     }
 
     var config = {
-      userName: data.user,
-      password: data.password,
-      server: data.server,
-      options: {
-        database: data.name
-      }
-    },
-    request = {},
-    connection = new Connection(config);
+        userName: data.user,
+        password: data.password,
+        server: data.server,
+        options: {
+          database: data.name
+        }
+      },
+      request = {},
+      connection = new Connection(config);
 
     connection.on("connect", function(err) {
       if (err) {
         console.log(err);
         socket.emit("error", { message:err });
       } else {
+        session.config = config;
+        session.save();
         if (data.table) {
           var queryString = "select top 1000 * from " + data.table;
           request = new Request(queryString, function(err, rowCount) {
