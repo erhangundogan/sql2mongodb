@@ -5,5 +5,5 @@
 
 exports.profiler = {};
 exports.profiler.get = function(req, res) {
-  res.render("index");
+  res.render("index", { locals: { session:req.session }});
 };

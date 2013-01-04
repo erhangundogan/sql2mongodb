@@ -9,20 +9,12 @@ var Connection = require("tedious").Connection,
     jade = require("jade"),
     path = require("path"),
     app = require("../app").app,
-    io = require("../app").io,
-    conf = {
-      userName: "",
-      password: "",
-      server: "80.93.210.73",
-      options: {
-        database: "My_EG_Search_2011"
-      }
-    };
+    io = require("../app").io;
 
 exports.validateServer = function(err, socket, session) {
   socket.on("test server", function(data) {
     if (!data) {
-      return socket.emit("error", { message:"no server information received" });
+      return socket.emit("error", "no server information received");
     }
 
     var config = {
@@ -35,24 +27,39 @@ exports.validateServer = function(err, socket, session) {
     connection.on("connect", function(err) {
       if (err) {
         console.log(err);
-        socket.emit("error", { message:err });
+        socket.emit("notconnected", err);
       } else {
         socket.emit("connected");
         session.config = config;
         session.save();
+
+        var queryDatabases = new Request("sp_databases", function(err, rowCount) {
+          if (err) {
+            console.log(err);
+          }
+        }), databaseList = [];
+
+        queryDatabases.on("row", function(database) {
+          databaseList.push(database[0].value);
+        });
+
+        queryDatabases.on("doneInProc", function(rowCount, more) {
+          socket.emit("databases", databaseList);
+        });
+
+        connection.callProcedure(queryDatabases);
       }
     });
 
     connection.on("errorMessage", function(err) {
       console.log(err);
-      socket.emit("error", { message:err });
+      socket.emit("notconnected", err);
     });
 
   });
-
   socket.on("test command", function(data) {
     if (!data) {
-      return socket.emit("error", { message:"no table/procedure information received" });
+      return socket.emit("error", "no table/procedure information received");
     }
 
     var config = {
@@ -60,40 +67,57 @@ exports.validateServer = function(err, socket, session) {
         password: data.password,
         server: data.server,
         options: {
-          database: data.name
+          database: data.database
         }
       },
-      request = {},
       connection = new Connection(config);
 
     connection.on("connect", function(err) {
+      var rows = [], columns = [], request = {};
       if (err) {
         console.log(err);
-        socket.emit("error", { message:err });
+        socket.emit("notconnected", err);
       } else {
         session.config = config;
         session.save();
         if (data.table) {
-          var queryString = "select top 1000 * from " + data.table;
+          var queryString = "select top 100 * from " + data.table;
           request = new Request(queryString, function(err, rowCount) {
             if (err) {
               console.log(err);
-              socket.emit("error", { message:err });
-            } else {
-              socket.emit("done", rowCount);
+              socket.emit("error", err);
+            }
+          });
+
+          request.on("columnMetadata", function(allColumns) {
+            var indx = 0;
+            for (indx in allColumns) {
+              columns.push(allColumns[indx].colName);
             }
           });
 
           request.on("row", function(row) {
-            if (row) {
-              socket.emit("row", row);
+            var r = {},
+                item = {};
+            for (index in row) {
+              item = row[index];
+              r[item.metadata.colName] = item.value;
             }
+            rows.push(r);
           });
 
-          request.on("columnMetadata", function(columns) {
-            if (columns) {
-              socket.emit("columns", columns);
-            }
+          request.on("doneProc", function() {
+            jade.renderFile(
+              path.join(__dirname, "..", "views", "grid.jade"),
+              { rows:rows, columns:columns },
+              function(err, result) {
+                if (err) {
+                  console.error("[ERROR] JadeFormatter, %s", err.stack||err);
+                  socket.emit("error", err.stack||err);
+                } else {
+                  socket.emit("done", result);
+                }
+              });
           });
 
           connection.execSql(request);
@@ -102,22 +126,40 @@ exports.validateServer = function(err, socket, session) {
           request = new Request(data.procedure, function(err, rowCount) {
             if (err) {
               console.log(err);
-              socket.emit("error", { message:err });
-            } else {
-              socket.emit("done", rowCount);
+              socket.emit("error", err);
+            }
+          });
+
+          request.on("columnMetadata", function(allColumns) {
+            var indx = 0;
+            for (indx in allColumns) {
+              columns.push(allColumns[indx].colName);
             }
           });
 
           request.on("row", function(row) {
-            if (row) {
-              socket.emit("row", row);
+            var r = {},
+                item = {},
+                indx = 0;
+            for (indx in row) {
+              item = row[indx];
+              r[item.metadata.colName] = item.value;
             }
+             rows.push(r);
           });
 
-          request.on("columnMetadata", function(columns) {
-            if (columns) {
-              socket.emit("columns", columns);
-            }
+          request.on("doneProc", function() {
+            jade.renderFile(
+              path.join(__dirname, "..", "views", "grid.jade"),
+              { rows:rows, columns:columns },
+              function(err, result) {
+                if (err) {
+                  console.error("[ERROR] JadeFormatter, %s", err.stack||err);
+                  socket.emit("error", err.stack||err);
+                } else {
+                  socket.emit("done", result);
+                }
+              });
           });
 
           request.addParameter("OperatorID", TYPES.Int, 0);
@@ -140,14 +182,13 @@ exports.validateServer = function(err, socket, session) {
 
           connection.callProcedure(request);
         } else {
-          socket.emit("error", { message:"no table/procedure information received" })
+          socket.emit("error", "no table/procedure information received");
         }
       }
     });
-
     connection.on("errorMessage", function(err) {
       console.log(err);
-      socket.emit("error", { message:err })
+      socket.emit("notconnected", err);
     });
   });
 };

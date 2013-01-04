@@ -24,6 +24,7 @@ app.configure("development", function() {
   app.set("views", __dirname + "/views");
   app.set("view engine", "jade");
   app.set("view options", { layout: false }); // for extending jade blocks
+  app.use(require("connect-flash")());
   app.use(express.logger({ format: '\x1b[0;37m[:date] \x1b[0;32m:remote-addr \x1b[0;33m:method \x1b[0;30m:status \x1b[0;35m:response-time ms \x1b[0;36m:referrer \x1b[0;37m:url ' }));
   app.use(express.bodyParser({ uploadDir:"/tmp" }));
   app.use(express.methodOverride());
@@ -34,6 +35,11 @@ app.configure("development", function() {
     maxAge: new Date(Date.now() + 3600000),
     store: sessionStore
   }));
+  app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    res.locals.flash = function() { return req.flash() };
+    next();
+  });
   app.use(app.router);
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });

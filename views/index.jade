@@ -1,28 +1,49 @@
 extends layout
 
+block append head
+  link(type="text/css", rel="stylesheet", href="/public/style/slickgrid/slick.grid.css")
+  link(type="text/css", rel="stylesheet", href="/public/style/slickgrid/slick.default.css")
+
 block scripts
   script(src="/socket.io/socket.io.js")
   script
     var socket = io.connect("http://localhost:3000");
     socket.on("incoming", function(data) {
-      $("#result").html(data);
+      $("#result-panel").append(data);
     });
-    socket.on("columns", function(data) {
-      $("#result").append(data);
+    socket.on("done", function(result) {
+      $("#result-panel").html(result);
     });
-    socket.on("row", function(data) {
-      $("#result").append(data);
+    socket.on("error", function(error) {
+      document.write("Hata oluştu:" + error);
     });
-    socket.on("done", function(data) {
-      $("#result").append(data);
+    socket.on("connected", function() {
+      $("#validate-server-success").text("Başarılı");
     });
-    socket.on("error", function(data) {
-      document.write(data);
+    socket.on("notconnected", function(error) {
+      $("#validate-server-error").text("Hata: " + error);
     });
+    socket.on("databases", function(databases) {
+      $.each(databases, function(key, value) {
+        $("#selectItemName")
+        .append($("<option></option>")
+        .attr("value", value)
+        .text(value));
+      });
+      $("#selectItemName").show();
+      $("#inputItemName").hide();
+    });
+    function clearFields() {
+      $("#validate-server-success").text("");
+      $("#validate-server-error").text("");
+      $("#selectItemName").html("").hide();
+      $("#inputItemName").text("").show();
+    }
     $(function(){
       $("#validateServer").click(function(ev){
-        ev.preventDefault();
         var settings = {};
+        ev.preventDefault();
+        clearFields();
         settings.server = $("#inputServer").val();
         settings.user = $("#inputUser").val();
         settings.password = $("#inputPassword").val();
@@ -30,13 +51,29 @@ block scripts
       });
 
       $("#validateCommand").click(function(ev){
-        ev.preventDefault();
         var settings = {};
+        ev.preventDefault();
         settings.server = $("#inputServer").val();
         settings.user = $("#inputUser").val();
         settings.password = $("#inputPassword").val();
-        settings.table = $("#inputTable:checked").val();
-        settings.procedure = $("#inputProcedure:checked").val();
+
+        var is_db_select = $("#selectItemName").val();
+        if (is_db_select != undefined && is_db_select !== "") {
+          settings.database = is_db_select;
+        } else {
+          settings.database = $("#inputItemName").val();
+        }
+
+        var is_table = $("#inputTable:checked").val();
+        if (is_table != undefined) {
+          settings.table = $("#tableTextarea").val();
+        }
+
+        var is_procedure = $("#inputProcedure:checked").val();
+        if (is_procedure != undefined && is_procedure !== "") {
+          settings.procedure = $("#procedureTextarea").val();
+        }
+
         settings.name = $("#inputItemName").val();
         socket.emit("test command", settings);
       });
@@ -44,15 +81,17 @@ block scripts
       $("#inputTable").click(function(){
         $("#procedureDetail").hide();
         $("#tableDetail").show();
-      }).trigger();
+      });
 
       $("#inputProcedure").click(function(){
         $("#tableDetail").hide();
         $("#procedureDetail").show();
-      }).trigger();
+      }).trigger("click");
     });
 
 block content
+  - var session_config = locals && locals.session && locals.session.config ? locals.session.config : {};
+  - var session_database = session_config && session_config.options && session_config.options.database ? session_config.options.database : "";
   .row(style="margin-top:2em")
     .span18
       form.form-horizontal(action="/", method="post")
@@ -63,20 +102,22 @@ block content
             .row
               .span12
                 .control-group
-                  label.control-label(for="inputServer") Server Adres
+                  label.control-label(for="inputServer") Sunucu Adresi
                   .controls
-                    input#inputServer(type="text", placeholder="IP veya Domain")
+                    input#inputServer(type="text", placeholder="IP veya Domain", value=session_config.server)
                 .control-group
                   label.control-label(for="inputUser") Kullanıcı
                   .controls
-                    input#inputUser(type="text", placeholder="Kullanıcı")
+                    input#inputUser(type="text", placeholder="Kullanıcı", value=session_config.userName)
                 .control-group
                   label.control-label(for="inputPassword") Şifre
                   .controls
-                    input#inputPassword(type="password", placeholder="Şifre")
+                    input#inputPassword(type="password", placeholder="Şifre", value=session_config.password)
                 .control-group
                   .controls
                     input.btn.primary#validateServer(type="submit", value="Test")
+                    span.ml05.text-error#validate-server-error
+                    span.ml05.text-success#validate-server-success
         .row
           .span12
             h4 Tablo veya Prosedür
@@ -91,18 +132,20 @@ block content
                 .control-group
                   label.control-label(for="inputItemName") Veritabanı
                   .controls
-                    input#inputItemName(type="text", placeholder="Veritabanı")
+                    input#inputItemName(type="text", placeholder="Veritabanı", value=session_database)
+                    select#selectItemName.hide
+                      option(value="") - Bir Veritabanı Seçiniz -
                 .control-group.hide#tableDetail
-                  label.control-label(for="tableTextarea") Tablo
+                  label.control-label(for="tableTextarea") Tablo veya Sorgu
                   .controls
-                    textarea#tableTextarea(rows="4", onfocus="this.rows=8")
+                    textarea#tableTextarea.span4(rows="3", onfocus="this.rows=5")
                 .control-group.hide#procedureDetail
-                  label.control-label(for="procedureTextarea") Prosedür
+                  label.control-label(for="procedureTextarea") Saklı Yordam
                   .controls
-                    textarea#procedureTextarea(rows="4", onfocus="this.rows=8")
+                    textarea#procedureTextarea.span4(rows="3", onfocus="this.rows=5")
                 .control-group
                   .controls
                     input.btn#validateCommand(type="submit", value="Bağlan")
         .row
           .span12
-            #result
+            #result-panel

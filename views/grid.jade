@@ -1,0 +1,61 @@
+script(src="/public/js/slickgrid/lib/jquery.event.drag-2.0.min.js")
+script(src="/public/js/slickgrid/slick.core.js")
+script(src="/public/js/slickgrid/slick.grid.js")
+script(src="/public/js/slickgrid/slick.formatters.js")
+script(src="/public/js/validator-min.js")
+script
+  var grid = {},
+      grid_columns = [],
+      options = {
+        editable: false,
+        enableCellNavigation: false,
+        enableColumnReorder: false,
+        rowHeight: 28
+      },
+      cs = !{JSON.stringify(columns)},
+      colName = "";
+
+  for (var indx in cs) {
+    colName = cs[indx];
+    grid_columns.push({id:indx, field:colName, name:colName, width:70, formatter:renderSanitized });
+  }
+
+  function renderBlank(row, cell, value, columnDef, dataContext) { return ""; }
+
+  function renderSanitized(row, cell, value, columnDef, dataContext) {
+    if (value) {
+      var sanitizedValue = sanitize(""+value).entityEncode();
+      return "<span title='" + sanitizedValue + "'>" + sanitizedValue + "</span>";
+    } else {
+      return "";
+    }
+  }
+
+  var data = [],
+      records = !{JSON.stringify(rows)},
+      records_count = records.length,
+      data_types = [];
+
+  for (var record_num = 0; record_num < records_count; record_num++) {
+    var data_item = {},
+        record = records[record_num];
+    for (var column_num in grid_columns) {
+      var column = grid_columns[column_num].field;
+
+      if (records[column]) {
+        data_types.push(typeof records[column]);
+        data_item[column] = records[column];
+      }
+    }
+    data.push(data_item);
+  }
+  grid = new Slick.Grid("#grid", records, grid_columns, options);
+
+  grid.onClick.subscribe(function(e, args) {
+    $("#row-panel")
+      .html("<div style='margin:1em'>GRID: " + JSON.stringify(args) + "</div>")
+      .append("<div style='margin:1em'>ROW: " + JSON.stringify(records[args.row]) + "</div>");
+  });
+
+#grid(style="width:960px;height:650px;")
+#row-panel(style="width:960px;overflow:auto;")
