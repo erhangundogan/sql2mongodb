@@ -31,7 +31,7 @@ app.configure("development", function() {
   app.use(cookieParser);
   app.use("/public", express.static(__dirname + "/public"));
   app.use(express.session({
-    secret: "anshsb7s2j2a78D2nefkerltmKai61545s2k230O76thfwfmI1",
+    secret: "white_rabbit",
     maxAge: new Date(Date.now() + 3600000),
     store: sessionStore
   }));

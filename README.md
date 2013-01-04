@@ -1,27 +1,30 @@
-# sql2mongodb (aka Priceless)
+# sql2mongodb (aka priceless)
 
-## MS SQL Server >> MongoDB export tool
+### MS SQL Server - MongoDB export tool
 
-node.js and express based toolfor initialize sql server and query databases.
-When you are fine with the table or stored procedure, export it's structure
-and data if you want.
+MS SQL Server initialization and MongoDB export tool. It uses node.js, websockets (socket.io),
+MongoDb for session management as well. You can connect to MS SQL Server and query databases.
+When you are fine with the table or stored procedure, export it's structure and data to
+MongoDB server if you want.
 
-## How to Install
+Project is under development.
+
+### How to Install
 
 ```bash
 npm install sql2mongodb
 ```
 
-## How to use
+### How to use
 
 ```bash
 node app.js
 ```
 
-Browse http://localhost:3000
+Browse http://localhost:3000 and enjoy :)
 
 
-## Author
+### Author
 
 **Erhan Gundogan**
 

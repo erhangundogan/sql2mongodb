@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'view',
+1 verbose cli   'sql2mongodb' ]
+2 info using npm@1.1.37
+3 info using node@v0.6.20
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose config file C:\Users\Erhan\.npmrc
+6 verbose config file C:\Program Files\nodejs\etc\npmrc
+7 verbose config file C:\Program Files\nodejs\node_modules\npm\npmrc
+8 verbose url raw sql2mongodb
+9 verbose url resolving [ 'https://registry.npmjs.org/', './sql2mongodb' ]
+10 verbose url resolved https://registry.npmjs.org/sql2mongodb
+11 info retry registry request attempt 1 at 20:48:23
+12 http GET https://registry.npmjs.org/sql2mongodb
+13 http 404 https://registry.npmjs.org/sql2mongodb
+14 silly registry.get cb [ 404,
+14 silly registry.get   { server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+14 silly registry.get     date: 'Fri, 04 Jan 2013 18:47:14 GMT',
+14 silly registry.get     'content-type': 'application/json',
+14 silly registry.get     'content-length': '52',
+14 silly registry.get     'cache-control': 'must-revalidate' } ]
+15 error 404 'sql2mongodb' is not in the npm registry.
+15 error 404 You should bug the author to publish it
+15 error 404
+15 error 404 Note that you can also install from a
+15 error 404 tarball, folder, or http url, or git url.
+16 error System Windows_NT 6.1.7601
+17 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "view" "sql2mongodb"
+18 error cwd C:\projects\priceless
+19 error node -v v0.6.20
+20 error npm -v 1.1.37
+21 error code E404
+22 error message 404 Not Found: sql2mongodb
+23 verbose exit [ 1, true ]
