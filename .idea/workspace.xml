@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5e9c455-a9c4-46f9-a3c3-27fe53e9cd32" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/grid.jade" />
       <change type="DELETED" beforePath="C:\projects\priceless\.idea\jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\projects\priceless\views\row.jade" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/style/style.css" afterPath="$PROJECT_DIR$/public/style/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sockets/index.js" afterPath="$PROJECT_DIR$/sockets/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/grid.jade" afterPath="$PROJECT_DIR$/views/grid.jade" />
     </list>
     <ignored path="priceless.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,19 +26,19 @@
     <splitter split-orientation="horizontal" split-proportion="0.5022138">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/sockets/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="8" selection-start="345" selection-end="351" vertical-scroll-proportion="-0.49434388">
+                <state line="105" column="13" selection-start="2856" selection-end="2856" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="grid.jade" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="grid.jade" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/grid.jade">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="0" selection-start="673" selection-end="673" vertical-scroll-proportion="0.0">
+                <state line="45" column="45" selection-start="1435" selection-end="1449" vertical-scroll-proportion="0.9027149">
                   <folding />
                 </state>
               </provider>
@@ -142,11 +135,11 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/views/row.jade" />
-        <option value="$PROJECT_DIR$/sockets/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
-        <option value="$PROJECT_DIR$/views/grid.jade" />
         <option value="$PROJECT_DIR$/sql2.js" />
         <option value="$PROJECT_DIR$/tedious2.js" />
+        <option value="$PROJECT_DIR$/sockets/index.js" />
+        <option value="$PROJECT_DIR$/views/grid.jade" />
       </list>
     </option>
   </component>
@@ -351,11 +344,11 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15635005" sideWeight="0.5119306" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15635005" sideWeight="0.62472886" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4002169" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48806942" sideWeight="0.9916667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37527114" sideWeight="0.9916667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959327" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -420,12 +413,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/sockets/index.js</url>
-          <line>92</line>
+          <line>96</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/sockets/index.js</url>
-          <line>109</line>
+          <line>120</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
@@ -519,16 +512,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/grid.jade">
+    <entry file="file://$PROJECT_DIR$/sockets/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="673" selection-end="673" vertical-scroll-proportion="0.0">
+        <state line="105" column="13" selection-start="2856" selection-end="2856" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sockets/index.js">
+    <entry file="file://$PROJECT_DIR$/views/grid.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="345" selection-end="351" vertical-scroll-proportion="-0.49434388">
+        <state line="45" column="45" selection-start="1435" selection-end="1449" vertical-scroll-proportion="0.9027149">
           <folding />
         </state>
       </provider>

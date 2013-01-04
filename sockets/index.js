@@ -70,10 +70,14 @@ exports.validateServer = function(err, socket, session) {
           database: data.database
         }
       },
-      connection = new Connection(config);
+      connection = new Connection(config),
+      types = require("../tedious2.js");
 
     connection.on("connect", function(err) {
-      var rows = [], columns = [], request = {};
+      var rows = [],
+          columns = [],
+          request = {};
+
       if (err) {
         console.log(err);
         socket.emit("notconnected", err);
@@ -90,17 +94,24 @@ exports.validateServer = function(err, socket, session) {
           });
 
           request.on("columnMetadata", function(allColumns) {
-            var indx = 0;
+            var c = {},
+                item = {},
+                indx = 0;
             for (indx in allColumns) {
-              columns.push(allColumns[indx].colName);
+              item = allColumns[indx];
+              columns.push({
+                name: item.colName,
+                length: item.dataLength,
+                type: types[item.type.name]});
             }
           });
 
           request.on("row", function(row) {
             var r = {},
-                item = {};
-            for (index in row) {
-              item = row[index];
+                item = {},
+                indx = 0;
+            for (indx in row) {
+              item = row[indx];
               r[item.metadata.colName] = item.value;
             }
             rows.push(r);

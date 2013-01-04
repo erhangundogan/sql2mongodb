@@ -16,8 +16,8 @@ script
       colName = "";
 
   for (var indx in cs) {
-    colName = cs[indx];
-    grid_columns.push({id:indx, field:colName, name:colName, width:70, formatter:renderSanitized });
+    col = cs[indx];
+    grid_columns.push({id:indx, field:col.name, name:col.name, width:70, formatter:renderSanitized });
   }
 
   function renderBlank(row, cell, value, columnDef, dataContext) { return ""; }
