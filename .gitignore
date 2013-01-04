@@ -1,5 +1,4 @@
-public/resources/
 node_modules/
+.idea/
 .git
-.idea
 .DS_Store
