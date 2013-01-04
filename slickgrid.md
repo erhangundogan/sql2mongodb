@@ -1,8 +1,10 @@
-## SlickGrid Options
+## SlickGrid Events
+
+[SlickGrid Examples](https://github.com/mleibman/SlickGrid/wiki/Examples)
 
 ``` javascript
 {
-  "row":1,
+  "row":0,
   "cell":0,
   "grid":{
     "slickGridVersion":"2.0",

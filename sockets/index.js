@@ -142,9 +142,15 @@ exports.validateServer = function(err, socket, session) {
           });
 
           request.on("columnMetadata", function(allColumns) {
-            var indx = 0;
+            var c = {},
+                item = {},
+                indx = 0;
             for (indx in allColumns) {
-              columns.push(allColumns[indx].colName);
+              item = allColumns[indx];
+              columns.push({
+                name: item.colName,
+                length: item.dataLength,
+                type: types[item.type.name]});
             }
           });
 
