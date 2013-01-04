@@ -13,7 +13,7 @@ script
         rowHeight: 28
       },
       cs = !{JSON.stringify(columns)},
-      colName = "";
+      records = !{JSON.stringify(rows)};
 
   for (var indx in cs) {
     col = cs[indx];
@@ -31,29 +31,11 @@ script
     }
   }
 
-  var data = [],
-      records = !{JSON.stringify(rows)},
-      records_count = records.length,
-      data_types = [];
-
-  for (var record_num = 0; record_num < records_count; record_num++) {
-    var data_item = {},
-        record = records[record_num];
-    for (var column_num in grid_columns) {
-      var column = grid_columns[column_num].field;
-
-      if (records[column]) {
-        data_types.push(typeof records[column]);
-        data_item[column] = records[column];
-      }
-    }
-    data.push(data_item);
-  }
   grid = new Slick.Grid("#grid", records, grid_columns, options);
 
   grid.onClick.subscribe(function(e, args) {
     $("#row-panel")
-      .html("<div style='margin:1em'>GRID: " + JSON.stringify(args) + "</div>")
+      .html("<div style='margin:1em'>TYPE: " + JSON.stringify(cs[args.cell]) + "</div>")
       .append("<div style='margin:1em'>ROW: " + JSON.stringify(records[args.row]) + "</div>");
   });
 

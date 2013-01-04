@@ -84,7 +84,11 @@ exports.validateServer = function(err, socket, session) {
       } else {
         session.config = config;
         session.save();
+
         if (data.table) {
+          /*
+           Table
+           */
           var queryString = "select top 100 * from " + data.table;
           request = new Request(queryString, function(err, rowCount) {
             if (err) {
@@ -93,6 +97,7 @@ exports.validateServer = function(err, socket, session) {
             }
           });
 
+          // Columns information (call once)
           request.on("columnMetadata", function(allColumns) {
             var c = {},
                 item = {},
@@ -102,10 +107,12 @@ exports.validateServer = function(err, socket, session) {
               columns.push({
                 name: item.colName,
                 length: item.dataLength,
-                type: types[item.type.name]});
+                type: types[item.type.name],
+                base_type: item.type.name});
             }
           });
 
+          // Row information (call each row)
           request.on("row", function(row) {
             var r = {},
                 item = {},
@@ -134,6 +141,9 @@ exports.validateServer = function(err, socket, session) {
           connection.execSql(request);
 
         } else if (data.procedure) {
+          /*
+           Stored Procedure
+           */
           request = new Request(data.procedure, function(err, rowCount) {
             if (err) {
               console.log(err);
@@ -150,7 +160,8 @@ exports.validateServer = function(err, socket, session) {
               columns.push({
                 name: item.colName,
                 length: item.dataLength,
-                type: types[item.type.name]});
+                type: types[item.type.name],
+                base_type: item.type.name});
             }
           });
 

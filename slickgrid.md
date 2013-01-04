@@ -1,8 +1,10 @@
-## SlickGrid Events
+## SlickGrid Features
 
-[SlickGrid Examples](https://github.com/mleibman/SlickGrid/wiki/Examples)
+[Grid Options](https://github.com/mleibman/SlickGrid/wiki/Grid-Options)
+[Examples](https://github.com/mleibman/SlickGrid/wiki/Examples)
 
 ``` javascript
+// onClick args
 {
   "row":0,
   "cell":0,

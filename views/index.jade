@@ -78,6 +78,12 @@ block scripts
         socket.emit("test command", settings);
       });
 
+      $("#transferMongoDB").click(function(ev){
+        var settings = {};
+        ev.preventDefault();
+        // MongoDb transfer
+      }
+
       $("#inputTable").click(function(){
         $("#procedureDetail").hide();
         $("#tableDetail").show();
@@ -92,6 +98,7 @@ block scripts
 block content
   - var session_config = locals && locals.session && locals.session.config ? locals.session.config : {};
   - var session_database = session_config && session_config.options && session_config.options.database ? session_config.options.database : "";
+  - var session_mongodb = locals && locals.session && locals.session.mongodb ? locals.session.mongodb : "";
   .row(style="margin-top:2em")
     .span18
       form.form-horizontal(action="/", method="post")
@@ -145,7 +152,12 @@ block content
                     textarea#procedureTextarea.span4(rows="3", onfocus="this.rows=5")
                 .control-group
                   .controls
-                    input.btn#validateCommand(type="submit", value="Bağlan")
+                    input.btn#validateCommand(type="submit", value="Görüntüle")
+                .control-group
+                  label.control-label(for="inputMongoServer") MongoDB
+                  .controls
+                    input#inputMongoServer(type="text", placeholder="mongodb://localhost/db", value=session_mongodb)
+                    input.btn#transferMongoDB(type="submit", value="Transfer")
         .row
           .span12
             #result-panel
