@@ -191,3 +191,30 @@ exports.uid = function(len) {
     .slice(0, len);
 };
  */
+
+exports.arraySize = function(str) {
+  var ch,
+      st,
+      re = [],
+      j=0;
+
+  for (var i = 0; i < str.length; i++) {
+    ch = str.charCodeAt(i);
+    if(ch < 127) {
+      re[j++] = ch & 0xFF;
+    }
+    else
+    {
+      st = [];
+      do {
+        st.push(ch & 0xFF);
+        ch = ch >> 8;
+      }
+      while (ch);
+      st = st.reverse();
+      for(var k=0;k<st.length; ++k)
+        re[j++] = st[k];
+    }
+  }
+  return re;
+};

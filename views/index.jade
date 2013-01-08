@@ -14,6 +14,9 @@ block scripts
     socket.on("done", function(result) {
       $("#result-panel").html(result);
     });
+    socket.on("rows length", function(result) {
+      $("#result-panel").html(result);
+    });
     socket.on("error", function(error) {
       document.write("Hata oluştu:" + error);
     });
@@ -39,60 +42,69 @@ block scripts
       $("#selectItemName").html("").hide();
       $("#inputItemName").text("").show();
     }
+    function dataServices(transfer) {
+      var settings = {};
+      settings.server = $("#inputServer").val();
+      settings.userName = $("#inputUser").val();
+      settings.password = $("#inputPassword").val();
+
+      var is_db_select = $("#selectItemName").val();
+      if (is_db_select != undefined && is_db_select !== "") {
+        settings.database = is_db_select;
+      } else {
+        settings.database = $("#inputItemName").val();
+      }
+
+      var is_table = $("#inputTable:checked").val();
+      if (is_table != undefined) {
+        settings.table = $("#tableTextarea").val();
+      }
+
+      var is_procedure = $("#inputProcedure:checked").val();
+      if (is_procedure != undefined && is_procedure !== "") {
+        settings.procedure = $("#procedureTextarea").val();
+      }
+
+      settings.name = $("#inputItemName").val();
+      settings.transfer = transfer ? transfer : null;
+      socket.emit("test command", settings);
+    }
+
     $(function(){
       $("#validateServer").click(function(ev){
         var settings = {};
         ev.preventDefault();
         clearFields();
         settings.server = $("#inputServer").val();
-        settings.user = $("#inputUser").val();
+        settings.userName = $("#inputUser").val();
         settings.password = $("#inputPassword").val();
         socket.emit("test server", settings);
       });
 
       $("#validateCommand").click(function(ev){
-        var settings = {};
         ev.preventDefault();
-        settings.server = $("#inputServer").val();
-        settings.user = $("#inputUser").val();
-        settings.password = $("#inputPassword").val();
-
-        var is_db_select = $("#selectItemName").val();
-        if (is_db_select != undefined && is_db_select !== "") {
-          settings.database = is_db_select;
-        } else {
-          settings.database = $("#inputItemName").val();
-        }
-
-        var is_table = $("#inputTable:checked").val();
-        if (is_table != undefined) {
-          settings.table = $("#tableTextarea").val();
-        }
-
-        var is_procedure = $("#inputProcedure:checked").val();
-        if (is_procedure != undefined && is_procedure !== "") {
-          settings.procedure = $("#procedureTextarea").val();
-        }
-
-        settings.name = $("#inputItemName").val();
-        socket.emit("test command", settings);
+        dataServices();
       });
 
       $("#transferMongoDB").click(function(ev){
-        var settings = {};
         ev.preventDefault();
-        // MongoDb transfer
-      }
+        var mongoPattern = /mongodb:\/\//,
+            mongoDBName = $("#inputMongoServer").val(),
+            mdb = mongoPattern.test(mongoDBName) ?
+                 mongoDBName :
+                 "mongodb://localhost/" + mongoDBName;
+        dataServices(mdb);
+      });
 
       $("#inputTable").click(function(){
         $("#procedureDetail").hide();
         $("#tableDetail").show();
-      });
+      }).trigger("click");
 
       $("#inputProcedure").click(function(){
         $("#tableDetail").hide();
         $("#procedureDetail").show();
-      }).trigger("click");
+      });
     });
 
 block content
@@ -125,6 +137,7 @@ block content
                     input.btn.primary#validateServer(type="submit", value="Test")
                     span.ml05.text-error#validate-server-error
                     span.ml05.text-success#validate-server-success
+        hr
         .row
           .span12
             h4 Tablo veya Prosedür
@@ -151,13 +164,15 @@ block content
                   .controls
                     textarea#procedureTextarea.span4(rows="3", onfocus="this.rows=5")
                 .control-group
+                  label.control-label(for="validateCommand") Ekrana
                   .controls
                     input.btn#validateCommand(type="submit", value="Görüntüle")
                 .control-group
-                  label.control-label(for="inputMongoServer") MongoDB
+                  label.control-label(for="inputMongoServer") MongoDB Veritabanı
                   .controls
-                    input#inputMongoServer(type="text", placeholder="mongodb://localhost/db", value=session_mongodb)
-                    input.btn#transferMongoDB(type="submit", value="Transfer")
+                    input#inputMongoServer(type="text", placeholder="dbs", value=session_mongodb)
+                    input.btn.ml05#transferMongoDB(type="submit", value="Aktar")
+        hr
         .row
           .span12
             #result-panel
