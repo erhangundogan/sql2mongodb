@@ -2,22 +2,36 @@ var Connection = require("tedious").Connection,
     Request = require("tedious").Request,
     TYPES = require("tedious").TYPES,
     jade = require("jade"),
-    path = require("path")
+    path = require("path");
 
 var sqlConnection = module.exports =  function(config) {
   this.config = config;
 };
 sqlConnection.prototype.tableCount = function(table, callback) {
   var self = this,
-      connection = new Connection(this.config);
+      conn = new Connection(self.config);
 
-  connection.on("connect", function(err) {
+  conn.on("connect", function(err) {
     if (err) {
       console.log(err);
       callback(err, null);
     } else {
-      var queryString = "SELECT COUNT(0) FROM " + table;
-      var request = new Request(queryString, function(err, rowCount) {
+      var queryString = [];
+      /*
+       select SUM(rows) As Rows
+       from sys.partitions p
+       left join sys.objects o on o.object_id = p.object_id
+       where (p.index_id in (0,1)) and (o.is_ms_shipped = 0) and (o.type_desc = 'USER_TABLE') and (o.name = 'table')
+       */
+      queryString.push("SELECT SUM(rows) AS Rows");
+      queryString.push("FROM sys.partitions p");
+      queryString.push("LEFT JOIN sys.objects o ON o.object_id = p.object_id");
+      queryString.push("WHERE (p.index_id in (0,1)) AND (o.is_ms_shipped = 0) AND");
+      queryString.push("(o.type_desc = 'USER_TABLE') AND o.name = ");
+      queryString.push("('"+table+"')");
+      var query = queryString.join(" ");
+
+      var request = new Request(query, function(err, rowCount) {
         if (err) {
           console.log(err);
           callback(err, null);
@@ -28,11 +42,11 @@ sqlConnection.prototype.tableCount = function(table, callback) {
         callback(null, result[0].value);
       });
 
-      connection.execSqlBatch(queryString);
+      conn.execSql(request);
     }
   });
 
-  connection.on("errorMessage", function(err) {
+  conn.on("errorMessage", function(err) {
     console.log(err);
     callback(err, null);
   });
@@ -70,110 +84,134 @@ sqlConnection.prototype.testServer = function(callback) {
     callback(err, null);
   });
 };
-sqlConnection.prototype.getTable = function(table, callback) {
+sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callback) {
   var self = this,
-      connection = new Connection(this.config);
+      rows = [],
+      columns = [],
+      request = {},
+      lastRowID = 0,
+      count = 10000,
+      ratio = 0.8,
+      queryString = [],
+      types = require("./tedious2"),
+      transfer = require("./transfer");
 
   self.tableCount(table, function(err, tableCount) {
     if (err) {
       console.log(err);
       callback(err, null);
     } else {
-      connection.on("connect", function(err) {
-        var rows = [],
-            columns = [],
-            request = {},
-            lastRowID = 0,
-            count = 5000,
-            queryString = [];
 
-        if (err) {
-          console.log(err);
-          callback(err, null);
-        } else {
-          queryString.push("DECLARE @ColumnName NVARCHAR(60)");
-          queryString.push("SET @ColumnName = (SELECT top 1 name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.");
-          queryString.push(table);
-          queryString.push("'))");
-          queryString.push("SELECT * FROM ( ");
-          queryString.push("SELECT ROW_NUMBER() OVER(ORDER BY @ColumnName) AS row, T.* ");
-          queryString.push("FROM (SELECT * FROM ");
-          queryString.push(table);
-          queryString.push(") T ");
-          queryString.push(") T2 WHERE T2.row BETWEEN");
-          queryString.push(lastRowID);
-          queryString.push("AND");
-          queryString.push(count);
+      function recorder(start, itemCount) {
+        if (start >= tableCount) {
+          socket.emit("append", "Tüm kayıtlar aktarıldı");
+          return callback(null, start);
+        }
 
-          request = new Request(queryString, function(err, rowCount) {
-            if (err) {
-              console.log(err);
-              callback(err, null);
-            }
-          });
+        columns = [];
+        rows = [];
+        queryString = [];
+        queryString.push("DECLARE @ColumnName NVARCHAR(60)");
+        queryString.push("SET @ColumnName = (SELECT TOP 1 name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.");
+        queryString.push(table);
+        queryString.push("'))");
+        queryString.push("SELECT * FROM ( ");
+        queryString.push("SELECT ROW_NUMBER() OVER(ORDER BY @ColumnName) AS row, T.* ");
+        queryString.push("FROM (SELECT * FROM ");
+        queryString.push(table);
+        queryString.push(") T ");
+        queryString.push(") T2 WHERE T2.row BETWEEN");
+        queryString.push(start);
+        queryString.push("AND");
+        queryString.push(itemCount);
+        var query = queryString.join(" "),
+            connection = new Connection(self.config);
 
-          // Columns information (call once)
-          request.on("columnMetadata", function(allColumns) {
-            var c = {},
-                item = {},
-                indx = 0;
-            for (indx in allColumns) {
-              item = allColumns[indx];
-              columns.push({
-                name: item.colName,
-                length: item.dataLength,
-                type: types[item.type.name],
-                base_type: item.type.name});
-            }
-          });
+        connection.on("connect", function(err) {
+          if (err) {
+            console.log(err);
+            callback(err, null);
+          } else {
+            request = new Request(query, function(err, rowCount) {
+              if (err) {
+                console.log(err);
+                callback(err, null);
+              }
+            });
 
-          // Row information (call each row)
-          request.on("row", function(row) {
-            var r = {},
-                item = {},
-                indx = 0;
-            for (indx in row) {
-              item = row[indx];
-              r[item.metadata.colName] = item.value;
-            }
-            rows.push(r);
-            //socket.emit("rows length", rows.length + " kayıt alındı");
-          });
+            // Columns information (call once)
+            request.on("columnMetadata", function(allColumns) {
+              var c = {},
+                  item = {},
+                  indx = 0;
+              for (indx in allColumns) {
+                item = allColumns[indx];
+                columns.push({
+                  name: item.colName,
+                  length: item.dataLength,
+                  type: types[item.type.name],
+                  base_type: item.type.name});
+              }
+            });
 
-          request.on("doneProc", function() {
-            if (self.config.transfer) {
-              var transfer = require("transfer");
-              transfer.push(self.config, rows, function(err, result) {
-                if (err) {
-                  console.error("[ERROR] MongoTransfer, %s", err.stack||err);
-                  callback(err.stack||err, null);
-                } else {
-                  callback(null, result.length.toString());
-                }
-              });
-            } else {
-              jade.renderFile(
-                path.join(__dirname, "views", "grid.jade"),
-                { rows:rows, columns:columns },
-                function(err, result) {
+            // Row information (call each row)
+            request.on("row", function(row) {
+              var r = {},
+                  item = {},
+                  indx = 0;
+              for (indx in row) {
+                item = row[indx];
+                r[item.metadata.colName] = item.value;
+              }
+              rows.push(r);
+              socket.emit("done", lastRowID + rows.length + " kayıt alındı");
+            });
+
+            request.on("doneProc", function() {
+              if (mongodbServer) {
+                transfer.push(mongodbServer, table, rows, function(err, result) {
                   if (err) {
-                    console.error("[ERROR] JadeFormatter, %s", err.stack||err);
-                    callback(err.stack||err, null);
+                    if (err === "oversize") {
+                      count = count * ratio;
+                      socket.emit("append", "Kayıt boyutu 16MB'dan fazla, %20 azaltılıyor");
+                      recorder(lastRowID, count);
+                    } else {
+                      console.error("[ERROR] MongoTransfer, %s", err.stack||err);
+                      callback(err.stack||err, null);
+                    }
                   } else {
-                    callback(null, result);
+                    console.log(result.length);
+                    socket.emit("append", count + " kayıt MongoDB'ye eklendi");
+                    lastRowID = lastRowID + count;
+                    recorder(lastRowID, count);
                   }
                 });
-            }
-          });
+              } else {
+                jade.renderFile(
+                  path.join(__dirname, "views", "grid.jade"),
+                  { rows:rows, columns:columns },
+                  function(err, result) {
+                    if (err) {
+                      console.error("[ERROR] JadeFormatter, %s", err.stack||err);
+                      callback(err.stack||err, null);
+                    } else {
+                      callback(null, result);
+                    }
+                  });
+              }
+            });
 
-          connection.execSql(request);
-        }
-      });
+            connection.execSql(request);
+          }
+        });
 
-      connection.on("errorMessage", function(err) {
-        console.log(err);
-        callback(err, null);
-      });
+        connection.on("errorMessage", function(err) {
+          console.log(err);
+          callback(err, null);
+        });
+      }
+
+      recorder(lastRowID, count);
     }
   });
 };

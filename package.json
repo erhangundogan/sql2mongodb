@@ -1,19 +1,19 @@
 {
   "name": "sql2mongodb",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "sql2mongodb (aka Priceless), MS SQL Server to MongoDB Export Tool",
   "keywords": ["sql", "mssql", "export", "import", "mongo", "mongodb"],
   "author": "Erhan Gundogan <erhan@trposta.net>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/erhangundogan/priceless.git"
+    "url": "https://github.com/erhangundogan/sql2mongodb"
   },
   "dependencies": {
     "express": "2.5.8",
     "jade": ">= 0.27.7",
     "connect-flash": ">= 0.1.0",
     "connect-mongodb": ">= 1.1.5",
-    "mongoose": ">= 3.5.3",
+    "mongodb": ">= 1.2.8",
     "session.socket.io": ">= 0.1.3",
     "socket.io": ">= 0.9.13",
     "tedious": ">= 0.1.2"

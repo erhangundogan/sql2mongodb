@@ -14,17 +14,16 @@ block scripts
     socket.on("done", function(result) {
       $("#result-panel").html(result);
     });
-    socket.on("rows length", function(result) {
-      $("#result-panel").html(result);
+    socket.on("append", function(result) {
+      $("#append-panel").append(result);
     });
     socket.on("error", function(error) {
-      document.write("Hata oluştu:" + error);
+      $("#validate-server-success").text("");
+      $("#validate-server-error").text("Hata: " + error);
     });
     socket.on("connected", function() {
+      $("#validate-server-error").text("");
       $("#validate-server-success").text("Başarılı");
-    });
-    socket.on("notconnected", function(error) {
-      $("#validate-server-error").text("Hata: " + error);
     });
     socket.on("databases", function(databases) {
       $.each(databases, function(key, value) {
@@ -111,6 +110,9 @@ block content
   - var session_config = locals && locals.session && locals.session.config ? locals.session.config : {};
   - var session_database = session_config && session_config.options && session_config.options.database ? session_config.options.database : "";
   - var session_mongodb = locals && locals.session && locals.session.mongodb ? locals.session.mongodb : "";
+  - var session_mongodb_server = locals && locals.session && locals.session.mongodb_server ? locals.session.mongodb_server : "";
+  - session_mongodb_server = session_mongodb_server.length > 0 ? session_mongodb_server.slice(session_mongodb_server.lastIndexOf("/") + 1) : "";
+  - console.log(session_mongodb_server)
   .row(style="margin-top:2em")
     .span18
       form.form-horizontal(action="/", method="post")
@@ -170,9 +172,10 @@ block content
                 .control-group
                   label.control-label(for="inputMongoServer") MongoDB Veritabanı
                   .controls
-                    input#inputMongoServer(type="text", placeholder="dbs", value=session_mongodb)
+                    input#inputMongoServer(type="text", placeholder="MongoDB", value=session_mongodb_server)
                     input.btn.ml05#transferMongoDB(type="submit", value="Aktar")
         hr
         .row
           .span12
+            #append-panel
             #result-panel

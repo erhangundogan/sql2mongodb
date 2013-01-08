@@ -21,14 +21,15 @@ exports.validateServer = function(err, socket, session) {
       sqlConnection = new SqlConnection(config);
       sqlConnection.testServer(function(err, result) {
         if (err) {
-          socket.emit("notconnected", err);
+          socket.emit("error", err);
         } else {
+          session.config = config;
+          session.save();
           socket.emit("connected");
           socket.emit("databases", result);
         }
       });
   });
-
   socket.on("test command", function(data) {
     if (!data) {
       return socket.emit("error", "no table/procedure information received");
@@ -44,11 +45,15 @@ exports.validateServer = function(err, socket, session) {
       },
       sqlConnection = new SqlConnection(config);
 
+    session.mongodb_server = data.transfer;
+
     if (data.table) {
-      sqlConnection.getTable(data.table, function(err, result) {
+      sqlConnection.getTable(data.table, data.transfer, socket, function(err, result) {
         if (err) {
           socket.emit("error", err);
         } else {
+          session.config = config;
+          session.save();
           socket.emit("done", result);
         }
       });
@@ -57,6 +62,8 @@ exports.validateServer = function(err, socket, session) {
         if (err) {
           socket.emit("error", err);
         } else {
+          session.config = config;
+          session.save();
           socket.emit("done", result);
         }
       });
