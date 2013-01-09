@@ -1,4 +1,36 @@
 module.exports = {
+  "TinyInt":          "Number",
+  "Bit":              "Boolean",
+  "SmallInt":         "Number",
+  "Int":              "Number",
+  "SmallDateTime":    "Date",
+  "Real":             "Number",
+  "Money":            "Number",
+  "DateTime":         "Date",
+  "Float":            "Number",
+  "SmallMoney":       "Number",
+  "BigInt":           "Number",
+  "Image":            "Array",
+  "Text":             "String",
+  "UniqueIdentifierN":"Array",
+  "IntN":             "Number",
+  "NText":            "String",
+  "BitN":             "Boolean",
+  "DecimalN":         "Number",
+  "NumberN":          "Number",
+  "FloatN":           "Number",
+  "MoneyN":           "Number",
+  "DateTimeN":        "Date",
+  "VarBinary":        "Array",
+  "VarChar":          "String",
+  "Binary":           "Array",
+  "Char":             "String",
+  "NVarChar":         "String",
+  "NChar":            "String",
+  "Xml":              "String"
+};
+/*
+module.exports = {
   "Null":             "null",
   "TinyInt":          "Numeric",
   "Bit":              "Boolean",
@@ -30,3 +62,4 @@ module.exports = {
   "NChar":            "String",
   "Xml":              "String"
 };
+*/

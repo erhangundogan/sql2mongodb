@@ -24,8 +24,7 @@ exports.push = function(server, table, rows, callback) {
           console.error("[ERROR] db.collection: %s", err.stack||err);
           return callback(err, null);
         } else {
-          // 8000 + 1 + 0
-          collection.insert(rows, {safe:true}, callback);
+          collection.insert(rows, {safe:false}, callback);
         }
       });
     }

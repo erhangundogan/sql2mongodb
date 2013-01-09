@@ -90,7 +90,8 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
       columns = [],
       request = {},
       lastRowID = 0,
-      count = 10000,
+      insertRows = 0,
+      count = 9000,
       ratio = 0.8,
       queryString = [],
       types = require("./tedious2"),
@@ -140,6 +141,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
             });
 
             // Columns information (call once)
+            // refactor needed, do not get columnMetadata everytime
             request.on("columnMetadata", function(allColumns) {
               var c = {},
                   item = {},
@@ -154,51 +156,83 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
               }
             });
 
-            // Row information (call each row)
+            /* Row information (call each row)
+               [row] {
+                 value: int // 471
+                 metadata: {
+                   colName: string // ContractID
+                   dataLength: int // 4
+                 }
+               }
+
+               [column] {
+                 name: string // ContractID
+                 length: 4
+                 type: string // Number
+               }
+            */
             request.on("row", function(row) {
               var r = {},
                   item = {},
-                  indx = 0;
-              for (indx in row) {
-                item = row[indx];
-                r[item.metadata.colName] = item.value;
-              }
-              rows.push(r);
-              socket.emit("done", lastRowID + rows.length + " kayıt alındı");
-            });
+                  column = {},
+                  colNumber = 0;
 
-            request.on("doneProc", function() {
-              if (mongodbServer) {
-                transfer.push(mongodbServer, table, rows, function(err, result) {
-                  if (err) {
-                    if (err === "oversize") {
-                      count = count * ratio;
-                      socket.emit("append", "Kayıt boyutu 16MB'dan fazla, %20 azaltılıyor");
-                      recorder(lastRowID, count);
-                    } else {
-                      console.error("[ERROR] MongoTransfer, %s", err.stack||err);
-                      callback(err.stack||err, null);
+              // row columns
+              for (colNumber in row) {
+                item = row[colNumber];
+                for (column in columns) {
+                  if (column.name == item.metadata.colName) {
+                    switch (column.type) {
+                      case "Number":
+                        r[column.name] = Number(item.value);
+                        break;
+                      case "Boolean":
+                        r[column.name] = Boolean(item.value);
+                        break;
+                      case "Date":
+                        r[column.name] = new Date(item.value);
+                        break;
+                      case "Array":
+                        r[column.name] = new Array(item.value);
+                        break;
+                      case "String":
+                        r[column.name] = String(item.value);
+                        break;
+                      default:
+                        r[column.name] = item.value;
                     }
+              	    break;
+                  }
+                }
+              }
+
+              if (mongodbServer) {
+                transfer.push(mongodbServer, table, r, function(err, result) {
+                  if (err) {
+                    console.error("[ERROR] MongoTransfer, %s", err.stack||err);
+                    callback(err.stack||err, null);
                   } else {
-                    console.log(result.length);
-                    socket.emit("append", count + " kayıt MongoDB'ye eklendi");
-                    lastRowID = lastRowID + count;
-                    recorder(lastRowID, count);
+                    socket.emit("done", ++insertRows + " kayıt alındı ve MongoDB'ye eklendi.");
                   }
                 });
               } else {
-                jade.renderFile(
-                  path.join(__dirname, "views", "grid.jade"),
-                  { rows:rows, columns:columns },
-                  function(err, result) {
-                    if (err) {
-                      console.error("[ERROR] JadeFormatter, %s", err.stack||err);
-                      callback(err.stack||err, null);
-                    } else {
-                      callback(null, result);
-                    }
-                  });
+                rows.push(r);
+                socket.emit("done", lastRowID + rows.length + " kayıt alındı.");
               }
+            });
+
+            request.on("doneProc", function() {
+              jade.renderFile(
+                path.join(__dirname, "views", "grid.jade"),
+                { rows:rows, columns:columns },
+                function(err, result) {
+                  if (err) {
+                    console.error("[ERROR] JadeFormatter, %s", err.stack||err);
+                    callback(err.stack||err, null);
+                  } else {
+                    callback(null, result);
+                  }
+                });
             });
 
             connection.execSql(request);
