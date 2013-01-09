@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c83661d7-08c3-49aa-8947-cb3281bdd2ab" name="Default" comment="">
       <change type="DELETED" beforePath="C:\projects\sql2mongodb\npm-debug.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql.js" afterPath="$PROJECT_DIR$/sql.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tedious2.js" afterPath="$PROJECT_DIR$/tedious2.js" />
@@ -29,16 +30,7 @@
       <file leaf-file-name="sql.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sql.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="221" column="13" selection-start="7115" selection-end="7115" vertical-scroll-proportion="1.0631579">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="token-stream-parser.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/token/token-stream-parser.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="0" selection-start="3311" selection-end="3311" vertical-scroll-proportion="0.0">
+            <state line="228" column="9" selection-start="7479" selection-end="7479" vertical-scroll-proportion="3.7692308">
               <folding />
             </state>
           </provider>
@@ -47,7 +39,7 @@
       <file leaf-file-name="tedious2.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tedious2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="31" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
+            <state line="30" column="2" selection-start="940" selection-end="940" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -56,7 +48,7 @@
       <file leaf-file-name="transfer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/transfer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="782" selection-end="782" vertical-scroll-proportion="0.0">
+            <state line="24" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -72,6 +64,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -80,21 +75,21 @@
         <option value="$PROJECT_DIR$/settings.js" />
         <option value="$PROJECT_DIR$/mongo-transfer.js" />
         <option value="$PROJECT_DIR$/utils.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/sockets/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/tedious2.js" />
-        <option value="$PROJECT_DIR$/sql.js" />
         <option value="$PROJECT_DIR$/transfer.js" />
+        <option value="$PROJECT_DIR$/sql.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="254" />
-    <option name="y" value="33" />
-    <option name="width" value="1451" />
-    <option name="height" value="1006" />
+    <option name="x" value="143" />
+    <option name="y" value="60" />
+    <option name="width" value="1689" />
+    <option name="height" value="967" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -226,17 +221,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="254" y="33" width="1451" height="1006" extended-state="0" />
-    <editor active="false" />
+    <frame x="143" y="60" width="1689" height="967" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51918465" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21166307" sideWeight="0.5733945" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4266055" sideWeight="0.49522102" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21696374" sideWeight="0.6378897" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36211032" sideWeight="0.49522102" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36906078" sideWeight="0.50059736" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35779816" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35731414" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -298,20 +293,16 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="82" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/transfer.js</url>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="104" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/sqlbatch-payload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="467" selection-end="467" vertical-scroll-proportion="0.36607143" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/message-io.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="58" selection-start="182" selection-end="182" vertical-scroll-proportion="0.03696498" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/url_parser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="9" selection-start="374" selection-end="374" vertical-scroll-proportion="0.33268481" />
@@ -331,30 +322,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/profiler.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/grid.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="37" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="21" selection-start="3854" selection-end="3854" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="112" column="21" selection-start="3854" selection-end="3854" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -378,30 +361,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="6" selection-start="40" selection-end="40" vertical-scroll-proportion="0.04697157">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/tedious/lib/token/token-stream-parser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="0" selection-start="3311" selection-end="3311" vertical-scroll-proportion="0.0">
+        <state line="99" column="0" selection-start="3311" selection-end="3311" vertical-scroll-proportion="0.5464824">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/bson.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1489" column="16" selection-start="64008" selection-end="64016" vertical-scroll-proportion="0.7289235">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tedious2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="31" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
+        <state line="30" column="2" selection-start="940" selection-end="940" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/transfer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="782" selection-end="782" vertical-scroll-proportion="0.0">
+        <state line="24" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sql.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="221" column="13" selection-start="7115" selection-end="7115" vertical-scroll-proportion="1.0631579">
+        <state line="228" column="9" selection-start="7479" selection-end="7479" vertical-scroll-proportion="3.7692308">
           <folding />
         </state>
       </provider>

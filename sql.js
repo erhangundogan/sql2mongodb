@@ -1,8 +1,15 @@
 var Connection = require("tedious").Connection,
-    Request = require("tedious").Request,
-    TYPES = require("tedious").TYPES,
-    jade = require("jade"),
-    path = require("path");
+    Request    = require("tedious").Request,
+    TYPES      = require("tedious").TYPES,
+    jade       = require("jade"),
+    path       = require("path"),
+    dbConfig   = require("./settings").db,
+    mongoose   = exports.mongoose = require("mongoose"),
+    mongodb    = require("mongoose/node_modules/mongodb"),
+    Schema     = exports.Schema = mongoose.Schema,
+    ObjectId   = exports.ObjectId = Schema.ObjectId,
+    ObjectID   = require("mongodb/node_modules/bson/lib/bson").ObjectID,
+    MongoConnection = {};
 
 var sqlConnection = module.exports =  function(config) {
   this.config = config;
@@ -86,14 +93,12 @@ sqlConnection.prototype.testServer = function(callback) {
 };
 sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callback) {
   var self = this,
-      rows = [],
-      columns = [],
-      request = {},
+      rows = [], columns = [], queryString = [],
+      schema = {}, ItemSchema = {}, ItemModel = {}, request = {},
       lastRowID = 0,
       insertRows = 0,
       count = 9000,
       ratio = 0.8,
-      queryString = [],
       types = require("./tedious2"),
       transfer = require("./transfer");
 
@@ -102,126 +107,109 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
       console.log(err);
       callback(err, null);
     } else {
+      if (mongodbServer) {
+        MongoConnection = mongoose.createConnection(mongodbServer);
+      }
 
-      function recorder(start, itemCount) {
-        if (start >= tableCount) {
-          socket.emit("append", "Tüm kayıtlar aktarıldı");
-          return callback(null, start);
-        }
+      queryString.push("DECLARE @ColumnName NVARCHAR(60)");
+      queryString.push("SET @ColumnName = (SELECT TOP 1 name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.");
+      queryString.push(table);
+      queryString.push("'))");
+      queryString.push("SELECT * FROM ( ");
+      queryString.push("SELECT ROW_NUMBER() OVER(ORDER BY @ColumnName) AS row, T.* ");
+      queryString.push("FROM (SELECT * FROM ");
+      queryString.push(table);
+      queryString.push(") T ");
+      queryString.push(") T2 WHERE T2.row BETWEEN");
+      queryString.push(lastRowID);
+      queryString.push("AND");
+      queryString.push(lastRowID + count);
+      var query = queryString.join(" "),
+          connection = new Connection(self.config);
 
-        columns = [];
-        rows = [];
-        queryString = [];
-        queryString.push("DECLARE @ColumnName NVARCHAR(60)");
-        queryString.push("SET @ColumnName = (SELECT TOP 1 name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.");
-        queryString.push(table);
-        queryString.push("'))");
-        queryString.push("SELECT * FROM ( ");
-        queryString.push("SELECT ROW_NUMBER() OVER(ORDER BY @ColumnName) AS row, T.* ");
-        queryString.push("FROM (SELECT * FROM ");
-        queryString.push(table);
-        queryString.push(") T ");
-        queryString.push(") T2 WHERE T2.row BETWEEN");
-        queryString.push(start);
-        queryString.push("AND");
-        queryString.push(itemCount);
-        var query = queryString.join(" "),
-            connection = new Connection(self.config);
+      connection.on("connect", function(err) {
+        if (err) {
+          console.log(err);
+          callback(err, null);
+        } else {
+          request = new Request(query, function(err, rowCount) {
+            if (err) {
+              console.log(err);
+              callback(err, null);
+            }
+            console.log("request finished");
+          });
 
-        connection.on("connect", function(err) {
-          if (err) {
-            console.log(err);
-            callback(err, null);
-          } else {
-            request = new Request(query, function(err, rowCount) {
-              if (err) {
-                console.log(err);
-                callback(err, null);
+          // Columns information (call once)
+          // refactor needed, do not get columnMetadata everytime
+          request.on("columnMetadata", function(allColumns) {
+            var columnItem = {};
+
+            if (mongodbServer) {
+              for (var idx in allColumns) {
+                columnItem = allColumns[idx];
+                schema[columnItem.colName] = types[columnItem.type.name];
               }
-            });
-
-            // Columns information (call once)
-            // refactor needed, do not get columnMetadata everytime
-            request.on("columnMetadata", function(allColumns) {
-              var c = {},
-                  item = {},
-                  indx = 0;
-              for (indx in allColumns) {
-                item = allColumns[indx];
+              ItemSchema = new Schema(schema);
+              ItemModel = MongoConnection.model(table, ItemSchema);
+            } else {
+              for (var idx in allColumns) {
+                columnItem = allColumns[idx];
                 columns.push({
-                  name: item.colName,
-                  length: item.dataLength,
-                  type: types[item.type.name],
-                  base_type: item.type.name});
+                  name: columnItem.colName,
+                  length: columnItem.dataLength,
+                  type: types[columnItem.type.name],
+                  base_type: columnItem.type.name});
               }
-            });
+            }
+          });
 
-            /* Row information (call each row)
-               [row] {
-                 value: int // 471
-                 metadata: {
-                   colName: string // ContractID
-                   dataLength: int // 4
-                 }
+          /* Row information (call each row)
+             [row] {
+               value: int // 471
+               metadata: {
+                 colName: string // ContractID
+                 dataLength: int // 4
                }
+             }
 
-               [column] {
-                 name: string // ContractID
-                 length: 4
-                 type: string // Number
-               }
-            */
-            request.on("row", function(row) {
+             [column] {
+               name: string // ContractID
+               length: 4
+               type: string // Number
+             }
+          */
+          request.on("row", function(row) {
+            console.log("row initiated");
+            // row columns
+
+            if (mongodbServer) {
+              var newItem = new ItemModel(row);
+              newItem.save(function(err, result) {
+                if (err) {
+                  console.error("[ERROR] new save failed, %s", err.stack||err);
+                  socket.emit("error", err.stack||err);
+                } else {
+                  socket.emit("done", ++insertRows + " kayıt alındı ve MongoDB'ye eklendi.");
+                }
+              });
+            } else {
               var r = {},
                   item = {},
-                  column = {},
-                  colNumber = 0;
+                  columnsItem = {};
 
-              // row columns
-              for (colNumber in row) {
-                item = row[colNumber];
-                for (column in columns) {
-                  if (column.name == item.metadata.colName) {
-                    switch (column.type) {
-                      case "Number":
-                        r[column.name] = Number(item.value);
-                        break;
-                      case "Boolean":
-                        r[column.name] = Boolean(item.value);
-                        break;
-                      case "Date":
-                        r[column.name] = new Date(item.value);
-                        break;
-                      case "Array":
-                        r[column.name] = new Array(item.value);
-                        break;
-                      case "String":
-                        r[column.name] = String(item.value);
-                        break;
-                      default:
-                        r[column.name] = item.value;
-                    }
-              	    break;
-                  }
-                }
-              }
-
-              if (mongodbServer) {
-                transfer.push(mongodbServer, table, r, function(err, result) {
-                  if (err) {
-                    console.error("[ERROR] MongoTransfer, %s", err.stack||err);
-                    callback(err.stack||err, null);
-                  } else {
-                    socket.emit("done", ++insertRows + " kayıt alındı ve MongoDB'ye eklendi.");
-                  }
-                });
-              } else {
+                console.log("mongodb not specified");
                 rows.push(r);
                 socket.emit("done", lastRowID + rows.length + " kayıt alındı.");
-              }
-            });
+            }
+          });
 
-            request.on("doneProc", function() {
+          request.on("doneProc", function() {
+            console.log("proc finished");
+            if (mongodbServer) {
+              lastRowID = lastRowID + count;
+              recorder(lastRowID, count);
+            } else {
               jade.renderFile(
                 path.join(__dirname, "views", "grid.jade"),
                 { rows:rows, columns:columns },
@@ -232,20 +220,20 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
                   } else {
                     callback(null, result);
                   }
-                });
-            });
+                }
+              );
+            }
+          });
 
-            connection.execSql(request);
-          }
-        });
+          connection.execSql(request);
+        }
+      });
 
-        connection.on("errorMessage", function(err) {
-          console.log(err);
-          callback(err, null);
-        });
-      }
+      connection.on("errorMessage", function(err) {
+        console.log(err);
+        callback(err, null);
+      });
 
-      recorder(lastRowID, count);
     }
   });
 };
