@@ -164,6 +164,33 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
             }
           });
 
+          function itemPush(row, cb) {
+            var newRow = {};
+
+            // row columns
+            for (var colNumber in row) {
+              var item = row[colNumber];
+              for (var field in schema) {
+                if (field === item.metadata.colName) {
+                  newRow[field] = item.value;
+            	    break;
+                }
+              }
+            }
+
+            var newItem = new ItemModel(newRow);
+            newItem.save(function(err, result) {
+              if (err) {
+                console.error("[ERROR] new save failed, %s", err.stack||err);
+                socket.emit("error", err.stack||err);
+                cb(err, null);
+              } else {
+                socket.emit("done", ++insertRows + " kayıt alındı ve MongoDB'ye eklendi.");
+                cb(null, null);
+              }
+            });
+          }
+
           /* Row information (call each row)
              [row] {
                value: int // 471
@@ -180,32 +207,9 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
              }
           */
           request.on("row", function(row) {
-            console.log("row initiated");
-            // row columns
-
+            rows.push(row);
             if (mongodbServer) {
-              var newRow = {};
-
-              // row columns
-              for (var colNumber in row) {
-                var item = row[colNumber];
-                for (var field in schema) {
-                  if (field === item.metadata.colName) {
-                    newRow[field] = item.value;
-              	    break;
-                  }
-                }
-              }
-
-              var newItem = new ItemModel(newRow);
-              newItem.save(function(err, result) {
-                if (err) {
-                  console.error("[ERROR] new save failed, %s", err.stack||err);
-                  socket.emit("error", err.stack||err);
-                } else {
-                  socket.emit("done", ++insertRows + " kayıt alındı ve MongoDB'ye eklendi.");
-                }
-              });
+              itemPush(rows.pop());
             } else {
               socket.emit("error", "not implemented yet");
             }
