@@ -109,7 +109,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
 
       function startTransfer(start, rowCount) {
         if (start >= tableCount) {
-          return callback(null, "all rows retrieved");
+          return callback(null, "Transfer Finished!");
         }
         var queryString = [];
 
@@ -143,14 +143,16 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
 
             // should process columns again, because it may be changed
             request.on("columnMetadata", function(allColumns) {
-              var columnItem = {};
+              if (insertRows === 0) {
+                var columnItem = {};
 
-              for (var idx in allColumns) {
-                columnItem = allColumns[idx];
-                schema[columnItem.colName] = types[columnItem.type.name];
+                for (var idx in allColumns) {
+                  columnItem = allColumns[idx];
+                  schema[columnItem.colName] = types[columnItem.type.name];
+                }
+                ItemSchema = new Schema(schema);
+                ItemModel = MongoConnection.model(table, ItemSchema);
               }
-              ItemSchema = new Schema(schema);
-              ItemModel = MongoConnection.model(table, ItemSchema);
             });
 
             request.on("row", function(row) {

@@ -51,20 +51,22 @@ exports.validateServer = function(err, socket, session) {
       sqlConnection.getTable(data.table, data.transfer, socket, function(err, result) {
         if (err) {
           socket.emit("error", err);
+          process.exit(1);
         } else {
           session.config = config;
           session.save();
-          socket.emit("done", result);
+          socket.emit("finished", result);
         }
       });
     } else if (data.procedure) {
       sqlConnection.getProcedure(data.procedure, function(err, result) {
         if (err) {
           socket.emit("error", err);
+          process.exit(1);
         } else {
           session.config = config;
           session.save();
-          socket.emit("done", result);
+          socket.emit("finished", result);
         }
       });
     } else {
