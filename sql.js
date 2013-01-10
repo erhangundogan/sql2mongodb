@@ -93,7 +93,7 @@ sqlConnection.prototype.testServer = function(callback) {
 };
 sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callback) {
   var self = this,
-      rows = [], columns = [], queryString = [],
+      rows = [], columns = [],
       schema = {}, ItemSchema = {}, ItemModel = {}, request = {},
       lastRowID = 0,
       count = 10000,
@@ -112,6 +112,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
         if (start >= tableCount) {
           return callback(null, "all rows retrieved");
         }
+        var queryString = [];
 
         queryString.push("DECLARE @ColumnName NVARCHAR(60)");
         queryString.push("SET @ColumnName = (SELECT TOP 1 name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.");
@@ -137,7 +138,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
             request = new Request(query, function(err) {
               if (err) {
                 console.log(err);
-                callback(err, null);
+                return callback(err, null);
               }
             });
 
@@ -154,7 +155,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
             });
 
             request.on("row", function(row) {
-              socket.emit("done", ++readRows + " kayıt MSSQL'den alındı");
+              socket.emit("append", ++readRows + " kayıt MSSQL'den alındı");
               var newRow = {};
 
               for (var colNumber in row) {

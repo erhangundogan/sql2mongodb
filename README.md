@@ -12,7 +12,7 @@ Project is under development.
 ### How to Install
 
 ```bash
-npm install sql2mongodb
+npm install -d sql2mongodb
 ```
 
 ### How to use
