@@ -8,14 +8,11 @@ block scripts
   script(src="/socket.io/socket.io.js")
   script
     var socket = io.connect("http://localhost:3000");
-    socket.on("incoming", function(data) {
-      $("#result-panel").append(data);
-    });
     socket.on("done", function(result) {
       $("#result-panel").html(result);
     });
     socket.on("append", function(result) {
-      $("#append-panel").append(result);
+      $("#append-panel").html(result);
     });
     socket.on("error", function(error) {
       $("#validate-server-success").text("");

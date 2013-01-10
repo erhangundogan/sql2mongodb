@@ -5,7 +5,7 @@ var Connection = require("tedious").Connection,
     path       = require("path"),
     dbConfig   = require("./settings").db,
     mongoose   = exports.mongoose = require("mongoose"),
-    mongodb    = require("mongoose/node_modules/mongodb"),
+    mongodb    = require("mongodb"),
     Schema     = exports.Schema = mongoose.Schema,
     ObjectId   = exports.ObjectId = Schema.ObjectId,
     ObjectID   = require("mongodb/node_modules/bson/lib/bson").ObjectID,
@@ -96,9 +96,9 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
       rows = [], columns = [], queryString = [],
       schema = {}, ItemSchema = {}, ItemModel = {}, request = {},
       lastRowID = 0,
+      count = 10000,
       insertRows = 0,
-      count = 9000,
-      ratio = 0.8,
+      readRows = 0,
       types = require("./tedious2"),
       transfer = require("./transfer");
 
@@ -107,145 +107,98 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
       console.log(err);
       callback(err, null);
     } else {
-      if (mongodbServer) {
-        MongoConnection = mongoose.createConnection(mongodbServer);
-      }
 
-      queryString.push("DECLARE @ColumnName NVARCHAR(60)");
-      queryString.push("SET @ColumnName = (SELECT TOP 1 name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.");
-      queryString.push(table);
-      queryString.push("'))");
-      queryString.push("SELECT * FROM ( ");
-      queryString.push("SELECT ROW_NUMBER() OVER(ORDER BY @ColumnName) AS row, T.* ");
-      queryString.push("FROM (SELECT * FROM ");
-      queryString.push(table);
-      queryString.push(") T ");
-      queryString.push(") T2 WHERE T2.row BETWEEN");
-      queryString.push(lastRowID);
-      queryString.push("AND");
-      queryString.push(lastRowID + count);
-      var query = queryString.join(" "),
-          connection = new Connection(self.config);
+      function startTransfer(start, rowCount) {
+        if (start >= tableCount) {
+          return callback(null, "all rows retrieved");
+        }
 
-      connection.on("connect", function(err) {
-        if (err) {
-          console.log(err);
-          callback(err, null);
-        } else {
-          request = new Request(query, function(err, rowCount) {
-            if (err) {
-              console.log(err);
-              callback(err, null);
-            }
-            console.log("request finished");
-          });
+        queryString.push("DECLARE @ColumnName NVARCHAR(60)");
+        queryString.push("SET @ColumnName = (SELECT TOP 1 name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.");
+        queryString.push(table);
+        queryString.push("'))");
+        queryString.push("SELECT * FROM ( ");
+        queryString.push("SELECT ROW_NUMBER() OVER(ORDER BY @ColumnName) AS row, T.* ");
+        queryString.push("FROM (SELECT * FROM ");
+        queryString.push(table);
+        queryString.push(") T ");
+        queryString.push(") T2 WHERE T2.row BETWEEN");
+        queryString.push(start);
+        queryString.push("AND");
+        queryString.push(start + rowCount);
+        var query = queryString.join(" "),
+            connection = new Connection(self.config);
 
-          // Columns information (call once)
-          // refactor needed, do not get columnMetadata everytime
-          request.on("columnMetadata", function(allColumns) {
-            var columnItem = {};
+        connection.on("connect", function(err) {
+          if (err) {
+            console.log(err);
+            callback(err, null);
+          } else {
+            request = new Request(query, function(err) {
+              if (err) {
+                console.log(err);
+                callback(err, null);
+              }
+            });
 
-            if (mongodbServer) {
+            // should process columns again, because it may be changed
+            request.on("columnMetadata", function(allColumns) {
+              var columnItem = {};
+
               for (var idx in allColumns) {
                 columnItem = allColumns[idx];
                 schema[columnItem.colName] = types[columnItem.type.name];
               }
               ItemSchema = new Schema(schema);
               ItemModel = MongoConnection.model(table, ItemSchema);
-            } else {
-              for (var idx in allColumns) {
-                columnItem = allColumns[idx];
-                columns.push({
-                  name: columnItem.colName,
-                  length: columnItem.dataLength,
-                  type: types[columnItem.type.name],
-                  base_type: columnItem.type.name});
-              }
-            }
-          });
-
-          function itemPush(row, cb) {
-            var newRow = {};
-
-            // row columns
-            for (var colNumber in row) {
-              var item = row[colNumber];
-              for (var field in schema) {
-                if (field === item.metadata.colName) {
-                  newRow[field] = item.value;
-            	    break;
-                }
-              }
-            }
-
-            var newItem = new ItemModel(newRow);
-            newItem.save(function(err, result) {
-              if (err) {
-                console.error("[ERROR] new save failed, %s", err.stack||err);
-                socket.emit("error", err.stack||err);
-                cb(err, null);
-              } else {
-                socket.emit("done", ++insertRows + " kayıt alındı ve MongoDB'ye eklendi.");
-                cb(null, null);
-              }
             });
-          }
 
-          /* Row information (call each row)
-             [row] {
-               value: int // 471
-               metadata: {
-                 colName: string // ContractID
-                 dataLength: int // 4
-               }
-             }
+            request.on("row", function(row) {
+              socket.emit("done", ++readRows + " kayıt MSSQL'den alındı");
+              var newRow = {};
 
-             [column] {
-               name: string // ContractID
-               length: 4
-               type: string // Number
-             }
-          */
-          request.on("row", function(row) {
-            rows.push(row);
-            if (mongodbServer) {
-              itemPush(rows.pop());
-            } else {
-              socket.emit("error", "not implemented yet");
-            }
-          });
-
-          request.on("doneProc", function() {
-            console.log("proc finished");
-            if (mongodbServer) {
-              lastRowID = lastRowID + count;
-              // todo not defined error
-              recorder(lastRowID, count);
-            } else {
-              jade.renderFile(
-                path.join(__dirname, "views", "grid.jade"),
-                { rows:rows, columns:columns },
-                function(err, result) {
-                  if (err) {
-                    console.error("[ERROR] JadeFormatter, %s", err.stack||err);
-                    callback(err.stack||err, null);
-                  } else {
-                    callback(null, result);
+              for (var colNumber in row) {
+                var item = row[colNumber];
+                for (var field in schema) {
+                  if (field === item.metadata.colName) {
+                    newRow[field] = item.value;
+                    break;
                   }
                 }
-              );
-            }
-          });
+              }
 
-          connection.execSql(request);
-        }
-      });
+              var newItem = new ItemModel(newRow);
+              newItem.save(function(err, result) {
+                if (err) {
+                  console.error("[ERROR] save failed, %s", err.stack||err);
+                  socket.emit("error", err.stack||err);
+                  process.exit(1);
+                } else {
+                  console.log("mongodb item saved");
+                  socket.emit("done", ++insertRows + " kayıt MongoDB'ye eklendi.");
+                }
+              });
+            });
 
-      connection.on("errorMessage", function(err) {
-        console.log(err);
-        callback(err, null);
-      });
+            request.on("doneProc", function() {
+              lastRowID = lastRowID + insertRows;
+              startTransfer(lastRowID, count);
+            });
 
+            connection.execSql(request);
+          }
+        });
+
+        connection.on("errorMessage", function(err) {
+          console.log(err);
+          callback(err, null);
+        });
+      }
+
+      if (mongodbServer) {
+        MongoConnection = mongoose.createConnection(mongodbServer);
+        startTransfer(lastRowID, count);
+      }
     }
   });
 };
