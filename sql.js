@@ -184,7 +184,20 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
             // row columns
 
             if (mongodbServer) {
-              var newItem = new ItemModel(row);
+              var newRow = {};
+
+              // row columns
+              for (var colNumber in row) {
+                var item = row[colNumber];
+                for (var field in schema) {
+                  if (field === item.metadata.colName) {
+                    newRow[field] = item.value;
+              	    break;
+                  }
+                }
+              }
+
+              var newItem = new ItemModel(newRow);
               newItem.save(function(err, result) {
                 if (err) {
                   console.error("[ERROR] new save failed, %s", err.stack||err);
@@ -194,13 +207,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
                 }
               });
             } else {
-              var r = {},
-                  item = {},
-                  columnsItem = {};
-
-                console.log("mongodb not specified");
-                rows.push(r);
-                socket.emit("done", lastRowID + rows.length + " kayıt alındı.");
+              socket.emit("error", "not implemented yet");
             }
           });
 
@@ -208,6 +215,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
             console.log("proc finished");
             if (mongodbServer) {
               lastRowID = lastRowID + count;
+              // todo not defined error
               recorder(lastRowID, count);
             } else {
               jade.renderFile(
