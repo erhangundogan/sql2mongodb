@@ -99,8 +99,7 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
       count = 10000,
       insertRows = 0,
       readRows = 0,
-      types = require("./tedious2"),
-      transfer = require("./transfer");
+      types = require("./tedious2");
 
   self.tableCount(table, function(err, tableCount) {
     if (err) {
