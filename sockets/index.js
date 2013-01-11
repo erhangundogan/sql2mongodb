@@ -41,7 +41,7 @@ exports.validateServer = function(err, socket, session) {
         server: data.server,
         options: {
           database: data.database,
-          connectTimeout: 100000
+          connectTimeout: 60000
         }
       },
       sqlConnection = new SqlConnection(config);

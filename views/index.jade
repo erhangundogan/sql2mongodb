@@ -109,7 +109,7 @@ block scripts
 
       var chronometer = new Chronometer({
         onUpdateStatus: function(sec) {
-          updatePanel.text(sec);
+          updatePanel.text(sec.toHHMMSS());
         }
       });
 
