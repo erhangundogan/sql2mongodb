@@ -91,11 +91,13 @@ sqlConnection.prototype.testServer = function(callback) {
     callback(err, null);
   });
 };
-sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callback) {
+sqlConnection.prototype.getTable = function(data, socket, callback) {
   var self = this,
       rows = [], columns = [],
       schema = {}, ItemSchema = {}, ItemModel = {}, request = {},
-      lastRowID = 0,
+      table = data.table,
+      mongodbServer = data.transfer,
+      lastRowID = data.rowID || 0,
       count = 10000,
       insertRows = 0,
       readRows = 0,

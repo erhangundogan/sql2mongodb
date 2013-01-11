@@ -41,7 +41,7 @@ exports.validateServer = function(err, socket, session) {
         server: data.server,
         options: {
           database: data.database,
-          connectTimeout: 40000
+          connectTimeout: 100000
         }
       },
       sqlConnection = new SqlConnection(config);
@@ -49,7 +49,7 @@ exports.validateServer = function(err, socket, session) {
     session.mongodb_server = data.transfer;
 
     if (data.table) {
-      sqlConnection.getTable(data.table, data.transfer, socket, function(err, result) {
+      sqlConnection.getTable(data, socket, function(err, result) {
         if (err) {
           socket.emit("error", err);
           process.exit(1);

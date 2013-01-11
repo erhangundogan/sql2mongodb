@@ -59,6 +59,19 @@ block scripts
       };
     }
 
+    Number.prototype.toHHMMSS = function() {
+      sec_numb    = this;
+      var hours   = Math.floor(sec_numb / 3600);
+      var minutes = Math.floor((sec_numb - (hours * 3600)) / 60);
+      var seconds = sec_numb - (hours * 3600) - (minutes * 60);
+
+      if (hours   < 10) {hours   = "0"+hours;}
+      if (minutes < 10) {minutes = "0"+minutes;}
+      if (seconds < 10) {seconds = "0"+seconds;}
+      var time    = hours+':'+minutes+':'+seconds;
+      return time;
+    }
+
     function clearFields() {
       $("#validate-server-success").text("");
       $("#validate-server-error").text("");
@@ -72,6 +85,7 @@ block scripts
       settings.server = $("#inputServer").val();
       settings.userName = $("#inputUser").val();
       settings.password = $("#inputPassword").val();
+      settings.rowID = $("#inputStartRowNumber").val();
 
       var is_db_select = $("#selectItemName").val();
       if (is_db_select != undefined && is_db_select !== "") {
@@ -200,6 +214,10 @@ block content
                   label.control-label(for="procedureTextarea") Saklı Yordam
                   .controls
                     textarea#procedureTextarea.span4(rows="3", onfocus="this.rows=5")
+                .control-group#startRowNumber
+                  label.control-label(for="inputStartRowNumber") Başlangıç Satır Numarası
+                  .controls
+                    input#inputStartRowNumber(type="text", value="0")
                 .control-group
                   label.control-label(for="validateCommand") Ekrana
                   .controls
