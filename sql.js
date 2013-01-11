@@ -110,7 +110,10 @@ sqlConnection.prototype.getTable = function(data, socket, callback) {
     } else {
 
       function startTransfer(start, rowCount) {
-        if (start >= tableCount) {
+        var intStart = parseInt(start),
+            intTableCount = parseInt(tableCount);
+
+        if (intStart >= intTableCount) {
           return callback(null, "Transfer Finished!");
         }
         var queryString = [];
