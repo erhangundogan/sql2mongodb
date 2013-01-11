@@ -176,14 +176,13 @@ sqlConnection.prototype.getTable = function(table, mongodbServer, socket, callba
                   socket.emit("error", err.stack||err);
                   process.exit(1);
                 } else {
-                  console.log("mongodb item saved");
                   socket.emit("done", ++insertRows + " kayıt MongoDB'ye eklendi.");
                 }
               });
             });
 
             request.on("doneProc", function() {
-              lastRowID = lastRowID + insertRows;
+              lastRowID = lastRowID + count;
               startTransfer(lastRowID, count);
             });
 
