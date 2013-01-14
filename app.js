@@ -55,7 +55,7 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.profiler.get);
-app.post('/', routes.profiler.post);
+//app.post('/io', routes.profiler.post);
 
 //io.sockets.on('connection', sockets.validateServer);
 sessionSockets.on("connection", sockets.validateServer);
