@@ -5,27 +5,31 @@ block append head
   link(type="text/css", rel="stylesheet", href="/public/style/slickgrid/slick.default.css")
 
 block scripts
-  script(src="/socket.io/socket.io.js")
   script
-    var socket = io.connect("http://localhost:3000");
-    socket.on("done", function(result) {
+
+    function on_done(result) {
       $("#result-panel").html(result);
-    });
-    socket.on("append", function(result) {
+    }
+
+    function on_append(result) {
       $("#append-panel").html(result);
-    });
-    socket.on("error", function(error) {
+    }
+
+    function on_error(error) {
       $("#validate-server-success").text("");
       $("#validate-server-error").text("Hata: " + error);
-    });
-    socket.on("connected", function() {
+    }
+
+    function on_connected() {
       $("#validate-server-error").text("");
       $("#validate-server-success").text("Başarılı");
-    });
-    socket.on("finished", function() {
+    }
+
+    function on_finished() {
       $("#transferMongoDB").removeClass("disabled");
-    });
-    socket.on("databases", function(databases) {
+    }
+
+    function on_database(databases) {
       $.each(databases, function(key, value) {
         $("#selectItemName")
         .append($("<option></option>")
@@ -34,7 +38,7 @@ block scripts
       });
       $("#selectItemName").show();
       $("#inputItemName").hide();
-    });
+    }
 
     function Chronometer(options) {
       var timer,
@@ -78,6 +82,7 @@ block scripts
       $("#selectItemName").html("").hide();
       $("#inputItemName").text("").show();
     }
+
     function dataServices(transfer) {
       var settings = {};
           updatePanel = $("#timer-panel");
@@ -114,7 +119,22 @@ block scripts
       });
 
       chronometer.start();
-      socket.emit("test command", settings);
+      $.ajax({
+        url:"/old/command",
+        data: {"settings":settings},
+        timeout: 600000,
+        cache: false,
+        error: function(jqXHR, textStatus, errorThrown) {
+          return on_error(errorThrown);
+        },
+        success: function(data, textStatus, jqXHR) {
+          if (data) {
+            on_done(data);
+          } else {
+            on_error("komut hata verdi");
+          }
+        }
+      });
     }
 
     $(function(){
@@ -125,7 +145,24 @@ block scripts
         settings.server = $("#inputServer").val();
         settings.userName = $("#inputUser").val();
         settings.password = $("#inputPassword").val();
-        socket.emit("test server", settings);
+
+        $.ajax({
+          url:"/old/connect",
+          timeout: 30000,
+          data: {"settings":settings},
+          cache: false,
+          error: function(jqXHR, textStatus, errorThrown) {
+            return on_error(errorThrown);
+          },
+          success: function(data, textStatus, jqXHR) {
+            if (data) {
+              on_connected();
+              on_database(data);
+            } else {
+              on_error("veritabanı bilgisi alınamadı");
+            }
+          }
+        });
       });
 
       $("#validateCommand").click(function(ev){

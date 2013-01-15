@@ -9,7 +9,7 @@ var express           = require("express"),
     app               = exports.app = express.createServer(),
     io                = exports.io = require("socket.io").listen(app),
     dbConfig          = require("./settings").db.session,
-    MongoDb           = require("mongodb"),
+    MongoDb           = require("mongoose/node_modules/mongodb"),
     MongoDbServer     = new MongoDb.Server(dbConfig.host, dbConfig.port, dbConfig.serverOptions),
     MongoDbConnection = new MongoDb.Db(dbConfig.dbName, MongoDbServer, dbConfig.dbOptions),
     mongoStore        = require("connect-mongodb"),
@@ -55,7 +55,9 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.profiler.get);
-//app.post('/io', routes.profiler.post);
+app.get('/old', routes.profiler.getHttp);
+app.get('/old/connect', routes.profiler.connect);
+app.get('/old/command', routes.profiler.command);
 
 //io.sockets.on('connection', sockets.validateServer);
 sessionSockets.on("connection", sockets.validateServer);

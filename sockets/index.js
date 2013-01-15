@@ -1,6 +1,6 @@
 
 /*
- socket.io implementations
+ * Cutting Edge Websocket (socket.io) implementation
  */
 
 var SqlConnection = require("../sql"),

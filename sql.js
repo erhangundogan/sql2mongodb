@@ -5,10 +5,9 @@ var Connection = require("tedious").Connection,
     path       = require("path"),
     dbConfig   = require("./settings").db,
     mongoose   = exports.mongoose = require("mongoose"),
-    mongodb    = require("mongodb"),
+    mongodb    = require("mongoose/node_modules/mongodb"),
     Schema     = exports.Schema = mongoose.Schema,
     ObjectId   = exports.ObjectId = Schema.ObjectId,
-    ObjectID   = require("mongodb/node_modules/bson/lib/bson").ObjectID,
     MongoConnection = {};
 
 var sqlConnection = module.exports =  function(config) {
@@ -161,7 +160,13 @@ sqlConnection.prototype.getTable = function(data, socket, callback) {
             });
 
             request.on("row", function(row) {
-              socket.emit("append", ++readRows + " kayıt MSSQL'den alındı");
+              if (socket) {
+                socket.emit("append", ++readRows + " kayıt MSSQL'den alındı.");
+              } else {
+                if ((++readRows % 1000) == 0) {
+                  callback(null, readRows + " kayıt MSSQL'den alındı.");
+                }
+              }
               var newRow = {};
 
               for (var colNumber in row) {
@@ -178,10 +183,20 @@ sqlConnection.prototype.getTable = function(data, socket, callback) {
               newItem.save(function(err, result) {
                 if (err) {
                   console.error("[ERROR] save failed, %s", err.stack||err);
-                  socket.emit("error", err.stack||err);
+                  if (socket) {
+                    socket.emit("error", err.stack||err);
+                  } else {
+                    return callback(err.stack||err);
+                  }
                   process.exit(1);
                 } else {
-                  socket.emit("done", ++insertRows + " kayıt MongoDB'ye eklendi.");
+                  if (socket) {
+                    socket.emit("done", ++insertRows + " kayıt MongoDB'ye eklendi.");
+                  } else {
+                    if ((++insertRows % 1000) == 0) {
+                      callback(null, insertRows + " kayıt MongoDB'ye eklendi.");
+                    }
+                  }
                 }
               });
             });

@@ -2,10 +2,7 @@
 
 ### MS SQL Server - MongoDB export tool
 
-MS SQL Server initialization and MongoDB export tool. It uses node.js, websockets (socket.io),
-MongoDb for session management as well. You can connect to MS SQL Server and query databases.
-When you are fine with the table or stored procedure, export it's structure and data to
-MongoDB server if you want.
+MS SQL Server initialization and MongoDB export tool. It uses node.js and express for web server architecture; websocket(socket.io) and traditional http protocols, MSSQL connectivity with Tedious and MongoDb connectivity with Mongoose. MongoDB session management using as well. You can connect to MS SQL Server and query databases. When you are fine with the table or stored procedure, export it's structure and data to MongoDB server if you want.
 
 Project is under development.
 

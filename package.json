@@ -1,6 +1,6 @@
 {
   "name": "sql2mongodb",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "sql2mongodb (aka Priceless), MS SQL Server to MongoDB Export Tool",
   "keywords": ["sql", "mssql", "export", "import", "mongo", "mongodb"],
   "author": "Erhan Gundogan <erhan@trposta.net>",
