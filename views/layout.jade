@@ -4,14 +4,40 @@ html(lang="tr")
     block head
       title GwG Priceless
       include meta
-      link(type="text/css", href="/public/style/style.css", rel="stylesheet")
       //Bootstrap
       link(type="text/css", href="/public/bootstrap/css/bootstrap.min.css", rel="stylesheet", media="screen")
+      link(type="text/css", href="/public/style/style.css", rel="stylesheet")
 
     //if lt IE 9
       script(src="//html5shiv.googlecode.com/svn/trunk/html5.js")
     script(src="http://code.jquery.com/jquery-latest.js")
     script(src="/public/bootstrap/js/bootstrap.min.js")
+    script(src="/public/js/jquery.backstretch.min.js")
+    script
+      $(function(){
+        $.backstretch([
+              "/public/style/bg/dolores_1600x1200_B.jpg",
+              "/public/style/bg/japanGar_1600x1200_C.jpg",
+              "/public/style/bg/oranOnOlive_1600x1200_D.jpg",
+              "/public/style/bg/dolores_1600x1200_E.jpg",
+              "/public/style/bg/japanGar_1600x1200_D.jpg",
+              "/public/style/bg/dolores_1600x1200_G.jpg",
+              "/public/style/bg/dolores_1600x1200_D.jpg",
+              "/public/style/bg/japanGar_1600x1200_E.jpg",
+              "/public/style/bg/winterSpl_1600x1200_C.jpg",
+              "/public/style/bg/oranOnOlive_1600x1200_H.jpg",
+              "/public/style/bg/dolores_1600x1200_C.jpg",
+              "/public/style/bg/japanGar_1600x1200_B.jpg",
+              "/public/style/bg/dolores_1600x1200_H.jpg",
+              "/public/style/bg/granny_1600x1200_C.jpg",
+              "/public/style/bg/japanGar_1600x1200_G.jpg",
+              "/public/style/bg/oranOnOlive_1600x1200_C.jpg",
+              "/public/style/bg/winterSpl_1600x1200_G.jpg",
+              "/public/style/bg/japanGar_1600x1200_H.jpg",
+              "/public/style/bg/oranOnOlive_1600x1200_B.jpg",
+              "/public/style/bg/oranOnOlive_1600x1200_G.jpg"
+          ], {duration: 5000, fade: 1000});
+      });
     block scripts
 
     body(data-spy="scroll", data-target=".bs-docs-sidebar", data-twttr-rendered="true")
