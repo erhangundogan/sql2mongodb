@@ -204,24 +204,24 @@ block content
         input(type="hidden", name="csrf", value="csrf")
         .row
           .span12
-            h4 MSSQL Sunucusu
+            h4 MSSQL Server
             .row
               .span12
                 .control-group
-                  label.control-label(for="inputServer") Sunucu Adresi
+                  label.control-label(for="inputServer") Server IP Address
                   .controls
                     input#inputServer(type="text", placeholder="IP veya Domain", value=session_config.server)
                 .control-group
-                  label.control-label(for="inputUser") Kullanıcı
+                  label.control-label(for="inputUser") User
                   .controls
-                    input#inputUser(type="text", placeholder="Kullanıcı", value=session_config.userName)
+                    input#inputUser(type="text", placeholder="User", value=session_config.userName)
                 .control-group
-                  label.control-label(for="inputPassword") Şifre
+                  label.control-label(for="inputPassword") Password
                   .controls
-                    input#inputPassword(type="password", placeholder="Şifre", value=session_config.password)
+                    input#inputPassword(type="password", placeholder="Password", value=session_config.password)
                 .control-group
                   .controls
-                    input.btn.primary#validateServer(type="submit", value="Test")
+                    input.btn.primary#validateServer(type="submit", value="Test Login")
                     span.ml05.text-error#validate-server-error
                     span.ml05.text-success#validate-server-success
         hr
@@ -232,37 +232,37 @@ block content
               .span12
                 .control-group
                   .controls
-                    label.radio.inline Tablo
+                    label.radio.inline Table
                       input#inputTable(type="radio", name="settings[itemType]", value="table")
-                    label.radio.inline Saklı Yordam
+                    label.radio.inline Stored Procedure
                       input#inputProcedure(type="radio", name="settings[itemType]", value="procedure", checked="checked")
                 .control-group
-                  label.control-label(for="inputItemName") Veritabanı
+                  label.control-label(for="inputItemName") Database
                   .controls
-                    input#inputItemName(type="text", placeholder="Veritabanı", value=session_database)
+                    input#inputItemName(type="text", placeholder="Database", value=session_database)
                     select#selectItemName.hide
-                      option(value="") - Bir Veritabanı Seçiniz -
+                      option(value="") - Select Database -
                 .control-group.hide#tableDetail
-                  label.control-label(for="tableTextarea") Tablo veya Sorgu
+                  label.control-label(for="tableTextarea") Table or Query
                   .controls
                     textarea#tableTextarea.span4(rows="3", onfocus="this.rows=5")
                 .control-group.hide#procedureDetail
-                  label.control-label(for="procedureTextarea") Saklı Yordam
+                  label.control-label(for="procedureTextarea") Stored Procedure
                   .controls
                     textarea#procedureTextarea.span4(rows="3", onfocus="this.rows=5")
                 .control-group#startRowNumber
-                  label.control-label(for="inputStartRowNumber") Başlangıç Satır Numarası
+                  label.control-label(for="inputStartRowNumber") Records Begin ID
                   .controls
                     input#inputStartRowNumber(type="text", value="0")
                 .control-group
-                  label.control-label(for="validateCommand") Ekrana
+                  label.control-label(for="validateCommand") Show on Screen
                   .controls
-                    input.btn.disabled#validateCommand(type="submit", value="Görüntüle")
+                    input.btn.disabled#validateCommand(type="submit", value="Show")
                 .control-group
-                  label.control-label(for="inputMongoServer") MongoDB Veritabanı
+                  label.control-label(for="inputMongoServer") MongoDB Database
                   .controls
                     input#inputMongoServer(type="text", placeholder="MongoDB", value=session_mongodb_server)
-                    input.btn.ml05#transferMongoDB(type="submit", value="Aktar")
+                    input.btn.ml05#transferMongoDB(type="submit", value="Transfer")
         hr
         .row
           .span12

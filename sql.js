@@ -161,10 +161,10 @@ sqlConnection.prototype.getTable = function(data, socket, callback) {
 
             request.on("row", function(row) {
               if (socket) {
-                socket.emit("append", ++readRows + " kayıt MSSQL'den alındı.");
+                socket.emit("append", ++readRows + " rows retrieved from MSSQL.");
               } else {
                 if ((++readRows % 1000) == 0) {
-                  callback(null, readRows + " kayıt MSSQL'den alındı.");
+                  callback(null, readRows + " rows retrieved from MSSQL.");
                 }
               }
               var newRow = {};
@@ -191,10 +191,10 @@ sqlConnection.prototype.getTable = function(data, socket, callback) {
                   process.exit(1);
                 } else {
                   if (socket) {
-                    socket.emit("done", ++insertRows + " kayıt MongoDB'ye eklendi.");
+                    socket.emit("done", ++insertRows + " rows added to MongoDB.");
                   } else {
                     if ((++insertRows % 1000) == 0) {
-                      callback(null, insertRows + " kayıt MongoDB'ye eklendi.");
+                      callback(null, insertRows + " rows added to MongoDB.");
                     }
                   }
                 }
@@ -282,23 +282,7 @@ sqlConnection.prototype.getProcedure = function(procedure, callback) {
           });
       });
 
-      request.addParameter("OperatorID", TYPES.Int, 0);
-      request.addParameter("HotelID", TYPES.NVarChar, "");
-      request.addParameter("CountryCode", TYPES.NVarChar, "EG");
-      request.addParameter("City", TYPES.NVarChar, "");
-      request.addParameter("Area", TYPES.NVarChar, "");
-      request.addParameter("Categories", TYPES.NVarChar, "");
-      request.addParameter("Boards", TYPES.NVarChar, "");
-      request.addParameter("Rooms", TYPES.NVarChar, "");
-      request.addParameter("CheckInDate", TYPES.SmallDateTime, new Date(2013,2,1));
-      request.addParameter("CheckOutDate", TYPES.SmallDateTime, new Date(2013,2,10));
-      request.addParameter("Adult", TYPES.Int, 2);
-      request.addParameter("Child", TYPES.Int, 0);
-      request.addParameter("ChildAge1", TYPES.Int, 0);
-      request.addParameter("ChildAge2", TYPES.Int, 0);
-      request.addParameter("UserID", TYPES.Int, 112000);
-      request.addParameter("FirmID", TYPES.Int, 65);
-      request.addParameter("Position", TYPES.NVarChar, "web_Agent");
+      request.addParameter("ID", TYPES.Int, 0);      
 
       connection.callProcedure(request);
     }
