@@ -1,3 +1,5 @@
+[![NPM version](https://badge.fury.io/js/sql2mongodb.png)](http://badge.fury.io/js/sql2mongodb)
+
 # sql2mongodb (aka priceless)
 
 ### MS SQL Server - MongoDB export tool
